@@ -1,104 +1,542 @@
 @import "tailwindcss";
 
-/*
-  Velmora — Roofing Contractor Demo System
-  Design tokens shared by all templates.
-  Templates may add template-specific tokens inside their own scope.
-*/
+/* ==========================================================================
+   Velmora — Roofing Contractor Design System
+   Tailwind CSS v4 · Semantic tokens + reusable component classes.
+   Template-specific overrides can extend or reset any of these.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   DESIGN TOKENS
+   -------------------------------------------------------------------------- */
 
 @theme {
-  /* Typography */
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+
+  /* ---- Typography ---- */
+
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, sans-serif;
-  --font-display: "Barlow Condensed", "Arial Narrow", ui-sans-serif, system-ui,
+
+  --font-display:
+    "Barlow Condensed", "Arial Narrow", ui-sans-serif, system-ui,
     sans-serif;
 
-  /* Brand accent (defaults; templates override per-site) */
-  --color-brand-50: #fef3f2;
-  --color-brand-100: #fee5e3;
-  --color-brand-200: #fdd0cc;
-  --color-brand-300: #f9aea8;
-  --color-brand-400: #f4726a;
-  --color-brand-500: #ef4444;
-  --color-brand-600: #e0202a;
-  --color-brand-700: #be1c22;
-  --color-brand-800: #9d1b20;
-  --color-brand-900: #821d21;
-  --color-brand-950: #47090c;
+  /* Display / heading scale */
+  --text-hero:      clamp(2.5rem, 5.5vw, 4.25rem);
+  --text-hero--line-height:   1.02;
+  --text-hero--letter-spacing:-0.02em;
+  --text-hero--font-weight:   800;
 
-  --color-ink-50: #f6f7f9;
-  --color-ink-100: #eceef2;
-  --color-ink-200: #d4d9e2;
-  --color-ink-300: #aeb7c6;
-  --color-ink-400: #8390a6;
-  --color-ink-500: #64748b;
-  --color-ink-600: #4f5d72;
-  --color-ink-700: #424c5e;
-  --color-ink-800: #3a4250;
-  --color-ink-900: #2b303b;
-  --color-ink-950: #101216;
+  --text-h1:        clamp(2.125rem, 4.5vw, 3.5rem);
+  --text-h1--line-height:     1.04;
+  --text-h1--letter-spacing: -0.016em;
+  --text-h1--font-weight:    700;
 
-  /* Neutrals */
-  --color-roof-50: #fbfbf9;
-  --color-roof-100: #f4f4f0;
-  --color-roof-200: #e6e6de;
-  --color-roof-300: #d4d4c8;
-  --color-roof-400: #b8b8a8;
-  --color-roof-500: #9a9a88;
-  --color-roof-600: #7c7c6e;
-  --color-roof-700: #5c5c52;
-  --color-roof-800: #45453e;
-  --color-roof-900: #30302b;
-  --color-roof-950: #1a1a17;
+  --text-h2:        clamp(1.75rem, 3.5vw, 2.5rem);
+  --text-h2--line-height:     1.08;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight:    700;
 
-  --shadow-card: 0 1px 2px rgba(16, 18, 22, 0.04),
-    0 8px 24px -12px rgba(16, 18, 22, 0.14);
-  --shadow-card-hover: 0 2px 4px rgba(16, 18, 22, 0.05),
-    0 16px 40px -16px rgba(16, 18, 22, 0.24);
-  --shadow-cta: 0 8px 24px -8px rgba(224, 32, 42, 0.5);
+  --text-h3:        clamp(1.375rem, 2.5vw, 1.75rem);
+  --text-h3--line-height:     1.14;
+  --text-h3--font-weight:    600;
+
+  --text-h4:        1.25rem;
+  --text-h4--line-height:     1.25;
+  --text-h4--font-weight:    600;
+
+  --text-lead:      clamp(1.125rem, 2vw, 1.3125rem);
+  --text-lead--line-height:   1.7;
+
+  --text-body-lg:   1.125rem;
+  --text-body-lg--line-height: 1.65;
+
+  --text-body:      1rem;
+  --text-body--line-height:   1.6;
+
+  --text-caption:   0.8125rem;
+  --text-caption--line-height:1.55;
+
+
+  /* ---- Brand (roofing orange) ---- */
+
+  --color-brand-50:  #FFF8F1;
+  --color-brand-100: #FFEFDB;
+  --color-brand-200: #FFD9B0;
+  --color-brand-300: #FFBE7A;
+  --color-brand-400: #FE9A3B;
+  --color-brand-500: #FC7D12;
+  --color-brand-600: #ED6407;
+  --color-brand-700: #C44B08;
+  --color-brand-800: #9C3A0F;
+  --color-brand-900: #7D3110;
+  --color-brand-950: #441605;
+
+
+  /* ---- Ink (near-black neutrals) ---- */
+
+  --color-ink-50:  #F8F5F1;
+  --color-ink-100: #F0EAE4;
+  --color-ink-200: #E2D9D0;
+  --color-ink-300: #C5BAB0;
+  --color-ink-400: #A79B90;
+  --color-ink-500: #8A7D72;
+  --color-ink-600: #6B5F55;
+  --color-ink-700: #4A4038;
+  --color-ink-800: #2E2620;
+  --color-ink-900: #211A14;
+  --color-ink-950: #17120E;
+
+
+  /* ---- Roof (warm off-white + muted grays) ---- */
+
+  --color-roof-50:  #FBF8F3;
+  --color-roof-100: #F5F0E8;
+  --color-roof-200: #EAE2D6;
+  --color-roof-300: #DCD1C2;
+  --color-roof-400: #C4B6A4;
+  --color-roof-500: #A99680;
+  --color-roof-600: #8A7765;
+  --color-roof-700: #6E5F50;
+  --color-roof-800: #594D42;
+  --color-roof-900: #403830;
+  --color-roof-950: #241F1A;
+
+
+  /* ---- Semantic status (light enough for badges, icons) ---- */
+
+  --color-ok-50:   #F0FDF4;
+  --color-ok-600:  #16A34A;
+  --color-ok-700:  #15803D;
+
+  --color-warn-50: #FFFBEB;
+  --color-warn-600:#D97706;
+
+  --color-err-50:  #FEF2F2;
+  --color-err-600: #DC2626;
+
+
+  /* ---- Radius (semantic) ---- */
+
+  --radius-btn:  0.5rem;
+  --radius-card: 1rem;
+  --radius-panel:1.5rem;
+  --radius-full: 9999px;
+
+
+  /* ---- Shadows ---- */
+
+  --shadow-soft:
+    0 2px 12px rgba(23,18,14,0.06);
+
+  --shadow-card:
+    0 1px 2px rgba(23,18,14,0.04),
+    0 10px 24px -12px rgba(23,18,14,0.12);
+
+  --shadow-card-hover:
+    0 2px 4px rgba(23,18,14,0.05),
+    0 18px 40px -16px rgba(23,18,14,0.22);
+
+  --shadow-cta:
+    0 10px 28px -10px rgba(196,75,8,0.55);
+
+  --shadow-cta-hover:
+    0 14px 34px -12px rgba(196,75,8,0.65);
+
+
+  /* ---- Section spacing ---- */
+
+  --spacing-section:    6rem;
+  --spacing-section-sm: 4rem;
+
+
+  /* ---- Misc ---- */
+
+  --color-ring-brand: var(--color-brand-600);
 }
 
+
+/* --------------------------------------------------------------------------
+   BASE
+   -------------------------------------------------------------------------- */
+
 @layer base {
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
-    font-family: var(--font-sans);
-    color: var(--color-ink-900);
     background-color: var(--color-roof-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    line-height: 1.6;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
+  h1, h2, h3, h4 {
+    color: var(--color-ink-950);
     font-family: var(--font-display);
-    line-height: 1.05;
+    font-weight: 700;
     letter-spacing: 0.01em;
+    line-height: 1.08;
   }
-
-  img {
-    max-width: 100%;
-    display: block;
-  }
-
-  a,
-  button {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  :focus-visible {
-    outline: 2px solid var(--color-brand-600);
-    outline-offset: 2px;
-  }
+  h1 { font-size: var(--text-h1); font-weight: 800; letter-spacing: var(--text-h1--letter-spacing); }
+  h2 { font-size: var(--text-h2); }
+  h3 { font-size: var(--text-h3); font-weight: 600; }
+  h4 { font-size: var(--text-h4); font-weight: 600; }
 
   ::selection {
     background-color: var(--color-brand-600);
     color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring-brand);
+    outline-offset: 2px;
+  }
+
+  img, video, svg { display: block; max-width: 100%; height: auto; }
+
+  a, button, input, textarea, select {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input, textarea, select {
+    font-family: inherit;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   COMPONENT CLASSES — Layout
+   -------------------------------------------------------------------------- */
+
+@layer components {
+
+  /* Site-wide container. */
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section rhythm — use on <section> or group wrappers. */
+  .section {
+    @apply py-section-sm md:py-section;
+  }
+
+  /* Two alternating section backgrounds for rhythm. */
+  .section-alt {
+    @apply bg-white;
+  }
+
+  /* Narrow text column (e.g. section intros, CTAs). */
+  .container-narrow {
+    @apply mx-auto max-w-3xl;
+  }
+
+
+  /* --------------------------------------------------------------------------
+     COMPONENT CLASSES — Typography helpers
+     -------------------------------------------------------------------------- */
+
+  /* Eyebrow / kicker line above a heading. */
+  .eyebrow {
+    @apply mb-3 block text-sm font-bold uppercase tracking-[0.16em] text-brand-700;
+  }
+
+  /* Semantic heading scale. */
+  .heading-hero {
+    @apply font-display text-hero font-extrabold tracking-tight text-ink-950;
+  }
+
+  .heading-1 {
+    @apply font-display text-h1 font-bold tracking-tight text-ink-950;
+  }
+
+  .heading-2 {
+    @apply font-display text-h2 font-bold tracking-tight text-ink-950;
+  }
+
+  .heading-3 {
+    @apply font-display text-h3 font-semibold text-ink-950;
+  }
+
+  .heading-4 {
+    @apply font-display text-h4 font-semibold text-ink-950;
+  }
+
+  /* Lead / subheading copy. */
+  .lead {
+    @apply text-lead leading-relaxed text-ink-600;
+  }
+
+  /* Section header combo: eyebrow + heading + lead. */
+  .section-head {
+    @apply mx-auto mb-12 max-w-2xl text-center;
+  }
+
+  .section-head-left {
+    @apply mb-12 max-w-2xl text-left;
+  }
+
+
+  /* --------------------------------------------------------------------------
+     COMPONENT CLASSES — Buttons
+     Usage: <a class="btn btn-primary btn-lg"> … </a>
+     Base (.btn) provides shared geometry; variant adds color/shadow.
+     -------------------------------------------------------------------------- */
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2
+           whitespace-nowrap rounded-btn font-semibold
+           transition-[background-color,border-color,color,box-shadow,transform]
+           duration-150 ease-in-out
+           select-none
+           focus-visible:outline-2 focus-visible:outline-offset-2;
+  }
+
+  .btn:active { @apply scale-[0.985]; }
+  .btn:disabled, .btn[aria-disabled="true"] {
+    @apply pointer-events-none opacity-50;
+  }
+
+  /* ---- Sizes ---- */
+  .btn-sm  { @apply px-4 py-2 text-sm;  }
+  .btn-md  { @apply px-6 py-3 text-base; }
+  .btn-lg  { @apply px-8 py-3.5 text-base; }
+
+  .btn-full { @apply w-full sm:w-auto; }
+
+
+  /* ---- Variants ---- */
+  .btn-primary {
+    @apply bg-brand-700 text-white shadow-cta;
+    &:hover  { @apply bg-brand-800 shadow-cta-hover; }
+  }
+
+  .btn-secondary {
+    @apply bg-ink-950 text-white;
+    &:hover { @apply bg-ink-800; }
+  }
+
+  .btn-outline {
+    @apply border-2 border-ink-900 text-ink-900 bg-transparent;
+    &:hover { @apply bg-ink-950 text-white; }
+  }
+
+  .btn-ghost {
+    @apply text-ink-800 bg-transparent;
+    &:hover { @apply bg-roof-100 text-ink-950; }
+  }
+
+  /* Prominent click-to-call button. */
+  .btn-call {
+    @apply bg-brand-600 text-white shadow-cta;
+    &:hover { @apply bg-brand-700 shadow-cta-hover; }
+  }
+
+  /* Light variation on dark backgrounds (footer, CTA band). */
+  .btn-on-dark {
+    @apply bg-white text-ink-950;
+    &:hover { @apply bg-roof-100; }
+  }
+
+
+  /* --------------------------------------------------------------------------
+     COMPONENT CLASSES — Cards & tiles
+     -------------------------------------------------------------------------- */
+
+  .card {
+    @apply rounded-card border border-roof-200 bg-white shadow-card;
+  }
+
+  .card-hover {
+    @apply transition-[box-shadow,transform] duration-200
+           hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  .card-image {
+    @apply relative overflow-hidden rounded-t-card;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  .card-tag {
+    @apply absolute right-3 top-3 rounded-full bg-brand-50 px-2.5 py-0.5
+           text-xs font-bold text-brand-700 shadow-soft;
+  }
+
+
+  /* --------------------------------------------------------------------------
+     COMPONENT CLASSES — Trust badges & chips
+     -------------------------------------------------------------------------- */
+
+  /* Pill badge used in trust bars, certification lists. */
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-roof-200
+           bg-white px-4 py-2 text-sm font-semibold text-ink-800 shadow-soft;
+  }
+
+  .badge-ok {
+    @apply border-ok-600/20 bg-ok-50 text-ok-700;
+  }
+
+  .badge-brand {
+    @apply border-brand-200 bg-brand-50 text-brand-800;
+  }
+
+  /* Square-ish icon container for trust grids. */
+  .icon-badge {
+    @apply inline-flex h-11 w-11 shrink-0 items-center justify-center
+           rounded-lg bg-brand-100 text-brand-700;
+  }
+
+  /* Stat tile (inside stats bar). */
+  .stat-tile {
+    @apply flex flex-col items-center gap-0.5 px-4 py-6 text-center text-white;
+  }
+
+  .stat-value {
+    @apply font-display text-3xl font-bold tracking-tight md:text-4xl;
+  }
+
+  .stat-label {
+    @apply text-sm text-white/80;
+  }
+
+  /* Small inline chip (e.g. hero perks). */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-roof-200
+           bg-white px-3.5 py-1.5 text-sm font-medium text-ink-700 shadow-soft;
+  }
+
+  /* Google rating chip (compact). */
+  .rating-chip {
+    @apply inline-flex items-center gap-1.5 rounded-lg bg-white
+           px-3 py-1.5 text-sm font-bold text-ink-900 shadow-soft;
+  }
+
+
+  /* --------------------------------------------------------------------------
+     COMPONENT CLASSES — Forms
+     Usage:
+       <label class="field-label" for="phone">Phone</label>
+       <input id="phone" class="field-input" placeholder="(555) 555-5555" required />
+     --------------------------------------------------------  */
+
+  .field {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .field-label {
+    @apply text-sm font-semibold text-ink-800;
+  }
+
+  .field-required::after {
+    @apply ml-0.5 text-err-600;
+    content: "*";
+  }
+
+  .field-input,
+  .field-select,
+  .field-textarea {
+    @apply w-full rounded-lg border border-roof-300 bg-white
+           px-4 py-3 text-base text-ink-900
+           placeholder:text-ink-400
+           shadow-sm
+           transition-[border-color,box-shadow]
+           focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-600/20;
+  }
+
+  .field-select {
+    @apply appearance-none bg-[url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236B5F55%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22/%3E%3C/svg%3E")]
+           bg-[length:1.25rem] bg-[position:right_1rem_center] bg-no-repeat
+           pr-10;
+  }
+
+  .field-textarea {
+    @apply min-h-[8rem] resize-y;
+  }
+
+  .field-hint {
+    @apply text-xs text-ink-500;
+  }
+
+  .field-error {
+    @apply text-xs font-semibold text-err-600;
+  }
+
+  /* Invalid state (use with :invalid pseudo-class). */
+  .field-input:invalid:not(:placeholder-shown),
+  .field-input[data-invalid="true"] {
+    @apply border-err-600 focus:border-err-600 focus:ring-err-600/20;
+  }
+
+
+  /* --------------------------------------------------------------------------
+     COMPONENT CLASSES — CTA / promotional bands
+     -------------------------------------------------------------------------- */
+
+  .cta-band {
+    @apply bg-ink-950 px-4 py-section-sm text-center text-white
+           md:px-section md:py-section;
+  }
+
+  .cta-band-light {
+    @apply bg-brand-700 px-4 py-section-sm text-center text-white
+           md:px-section md:py-section;
+  }
+
+  .cta-panel {
+    @apply rounded-2xl bg-ink-950 px-6 py-12 text-center text-white
+           shadow-card md:px-12 md:py-16;
+  }
+
+
+  /* --------------------------------------------------------------------------
+     COMPONENT CLASSES — Misc
+     -------------------------------------------------------------------------- */
+
+  /* Inline text link with underline-on-hover. */
+  .link-inline {
+    @apply font-medium text-brand-700 underline decoration-brand-300
+           underline-offset-4 transition-colors
+           hover:text-brand-800 hover:decoration-brand-600;
+  }
+
+  /* Top navigation link (header/footer). */
+  .nav-link {
+    @apply text-sm font-semibold text-ink-700 transition-colors
+           hover:text-brand-700;
+  }
+
+  /* Emergency banner (top strip). */
+  .emergency-banner {
+    @apply bg-brand-700 py-2.5 text-center text-sm font-semibold
+           tracking-wide text-white;
+  }
+
+  /* Testimonial blockquote. */
+  .testimonial-card {
+    @apply rounded-card border border-roof-200 bg-white p-6 shadow-card;
+  }
+
+  .testimonial-text {
+    @apply text-base leading-relaxed text-ink-700;
+  }
+
+  .testimonial-author {
+    @apply mt-4 text-sm font-semibold text-ink-900;
+  }
+
+  .testimonial-meta {
+    @apply text-xs font-normal text-ink-500;
   }
 }
