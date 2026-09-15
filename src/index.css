@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/*
+  Velmora — Roofing Contractor Demo System
+  Design tokens shared by all templates.
+  Templates may add template-specific tokens inside their own scope.
+*/
+
+@theme {
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", ui-sans-serif, system-ui,
+    sans-serif;
+
+  /* Brand accent (defaults; templates override per-site) */
+  --color-brand-50: #fef3f2;
+  --color-brand-100: #fee5e3;
+  --color-brand-200: #fdd0cc;
+  --color-brand-300: #f9aea8;
+  --color-brand-400: #f4726a;
+  --color-brand-500: #ef4444;
+  --color-brand-600: #e0202a;
+  --color-brand-700: #be1c22;
+  --color-brand-800: #9d1b20;
+  --color-brand-900: #821d21;
+  --color-brand-950: #47090c;
+
+  --color-ink-50: #f6f7f9;
+  --color-ink-100: #eceef2;
+  --color-ink-200: #d4d9e2;
+  --color-ink-300: #aeb7c6;
+  --color-ink-400: #8390a6;
+  --color-ink-500: #64748b;
+  --color-ink-600: #4f5d72;
+  --color-ink-700: #424c5e;
+  --color-ink-800: #3a4250;
+  --color-ink-900: #2b303b;
+  --color-ink-950: #101216;
+
+  /* Neutrals */
+  --color-roof-50: #fbfbf9;
+  --color-roof-100: #f4f4f0;
+  --color-roof-200: #e6e6de;
+  --color-roof-300: #d4d4c8;
+  --color-roof-400: #b8b8a8;
+  --color-roof-500: #9a9a88;
+  --color-roof-600: #7c7c6e;
+  --color-roof-700: #5c5c52;
+  --color-roof-800: #45453e;
+  --color-roof-900: #30302b;
+  --color-roof-950: #1a1a17;
+
+  --shadow-card: 0 1px 2px rgba(16, 18, 22, 0.04),
+    0 8px 24px -12px rgba(16, 18, 22, 0.14);
+  --shadow-card-hover: 0 2px 4px rgba(16, 18, 22, 0.05),
+    0 16px 40px -16px rgba(16, 18, 22, 0.24);
+  --shadow-cta: 0 8px 24px -8px rgba(224, 32, 42, 0.5);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink-900);
+    background-color: var(--color-roof-50);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-600);
+    color: #fff;
+  }
+}

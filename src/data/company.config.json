@@ -1,0 +1,244 @@
+{
+  "company": {
+    "name": "Summit Roofing Co.",
+    "legal_name": "Summit Roofing Co. LLC",
+    "phone": "(713) 555-0182",
+    "emergency_phone": "(713) 555-0199",
+    "email": "info@summitroofing.com",
+    "address": "4821 Westheimer Rd, Suite 700",
+    "city": "Houston",
+    "state": "TX",
+    "city_state": "Houston, TX",
+    "service_area": [
+      "Houston",
+      "Katy",
+      "Sugar Land",
+      "Bellaire",
+      "The Woodlands",
+      "Pearland"
+    ],
+    "years_in_business": 18,
+    "tagline": "Licensed • Insured • GAF-Certified",
+    "license_number": "TXRC-452118",
+    "hours": "Mon–Sat: 7:00am–7:00pm, 24/7 Storm Response",
+    "emergency_service": true
+  },
+  "hero": {
+    "eyebrow": "Houston's Storm-Trusted Roofing Contractor",
+    "headline": "A Stronger Roof Over Your Head — Built to Outlast Texas Weather",
+    "subheadline": "Free inspections, honest pricing, and factory-certified installation. We handle everything from storm damage to full roof replacement.",
+    "cta_primary_label": "Get My Free Inspection",
+    "cta_secondary_label": "Call Now",
+    "perks": ["Free Inspections", "0% Financing Available", "Insurance Claim Help"]
+  },
+  "ratings": {
+    "google_rating": 4.9,
+    "review_count": 428,
+    "review_url": "https://www.google.com/search?q=Summit+Roofing+Co+Houston"
+  },
+  "services": [
+    {
+      "id": "roof-replacement",
+      "title": "Roof Replacement",
+      "description": "Complete tear-off and replacement with architectural shingles, metal, or tile — backed by manufacturer warranties.",
+      "icon": "Roof",
+      "badge": "Most Popular"
+    },
+    {
+      "id": "storm-damage",
+      "title": "Storm Damage Repair",
+      "description": "Rapid-response hail and wind damage repairs. We handle inspections, documentation, and insurance claims for you.",
+      "icon": "CloudRainWind",
+      "badge": "24/7 Response"
+    },
+    {
+      "id": "roof-repair",
+      "title": "Roof Repair",
+      "description": "Leak detection, flashing, and shingle repair that stops small issues before they become major costs.",
+      "icon": "Wrench"
+    },
+    {
+      "id": "roof-inspection",
+      "title": "Roof Inspection",
+      "description": "Detailed photo-documented inspections and honest condition reports — free for homeowners and commercial owners.",
+      "icon": "Search"
+    },
+    {
+      "id": "gutters",
+      "title": "Gutters & Downspouts",
+      "description": "Seamless gutter installation and leaf guards engineered to keep water moving away from your foundation.",
+      "icon": "Droplets"
+    },
+    {
+      "id": "ventilation",
+      "title": "Attic Ventilation",
+      "description": "Balanced ridge and soffit ventilation that lowers attic heat and extends the life of your roof.",
+      "icon": "Fan"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "author": "Marcus T.",
+      "location": "Katy, TX",
+      "rating": 5,
+      "date": "2 weeks ago",
+      "text": "Summit replaced our roof two days after a hail storm. They handled the insurance paperwork completely and the roof looks fantastic. Zero pressure, zero surprises.",
+      "service": "Roof Replacement"
+    },
+    {
+      "id": "r2",
+      "author": "Linda R.",
+      "location": "Sugar Land, TX",
+      "rating": 5,
+      "date": "1 month ago",
+      "text": "Quick, professional, and clean. The crew took before/after photos and left the yard spotless. Best contractor experience we've had in 20 years.",
+      "service": "Storm Damage Repair"
+    },
+    {
+      "id": "r3",
+      "author": "David K.",
+      "location": "Bellaire, TX",
+      "rating": 5,
+      "date": "2 months ago",
+      "text": "They found a small leak and repaired it the same day I called. Fair price and they even showed me the photos of what was wrong.",
+      "service": "Roof Repair"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "t1",
+      "author": "Rebecca Alvarez",
+      "location": "The Woodlands, TX",
+      "role": "Homeowner",
+      "rating": 5,
+      "quote": "From the first inspection to the final walkthrough, Summit was professional and transparent. They explained every line item and came in under budget. Our new roof survived the spring storms without a single issue.",
+      "project_type": "Full Roof Replacement"
+    },
+    {
+      "id": "t2",
+      "author": "Tom & Sandra Ellis",
+      "location": "Pearland, TX",
+      "role": "Homeowners",
+      "rating": 5,
+      "quote": "After a tornado went through our neighborhood, Summit was at the door within hours. They filed the claim, dealt with the adjuster, and had our roof done in four days. We couldn't have asked for more.",
+      "project_type": "Storm Damage Repair"
+    },
+    {
+      "id": "t3",
+      "author": "Priya Nair",
+      "location": "Houston, TX",
+      "role": "Commercial Property Owner",
+      "rating": 5,
+      "quote": "We manage 12 rental properties and Summit handles every roof on our portfolio. Their maintenance program has cut our emergency repair costs dramatically.",
+      "project_type": "Commercial Roof Maintenance"
+    }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "title": "Timberline HDZ Replacement — Katy",
+      "type": "Roof Replacement",
+      "description": "Full tear-off and replacement with GAF Timberline HDZ in weathered wood. New ridge vent, pipe boots, and standing-seam accents.",
+      "location": "Katy, TX",
+      "year": "2025",
+      "image_url": "/projects/katy-roof.webp",
+      "before_image_url": "/projects/katy-roof-before.webp",
+      "after_image_url": "/projects/katy-roof-after.webp",
+      "result": "Completed in 2 days"
+    },
+    {
+      "id": "p2",
+      "title": "Hail Storm Recovery — Sugar Land",
+      "type": "Storm Damage Repair",
+      "description": "Insurance-claim full replacement after a spring hailstorm. Class 4 impact-resistant shingles over synthetic underlayment.",
+      "location": "Sugar Land, TX",
+      "year": "2025",
+      "image_url": "/projects/sugarland-roof.webp",
+      "before_image_url": "/projects/sugarland-roof-before.webp",
+      "after_image_url": "/projects/sugarland-roof-after.webp",
+      "result": "Filed & settled in 5 days"
+    },
+    {
+      "id": "p3",
+      "title": "Standing-Seam Metal — The Woodlands",
+      "type": "Metal Roof Installation",
+      "description": "Custom 24-gauge standing-seam metal roof with ice-and-water shield and lifetime finish warranty.",
+      "location": "The Woodlands, TX",
+      "year": "2024",
+      "image_url": "/projects/woodlands-metal.webp",
+      "before_image_url": "/projects/woodlands-metal-before.webp",
+      "after_image_url": "/projects/woodlands-metal-after.webp",
+      "result": "Completed in 5 days"
+    }
+  ],
+  "trust_badges": [
+    {
+      "id": "b1",
+      "label": "Licensed & Insured",
+      "detail": "Texas License #TXRC-452118",
+      "icon": "ShieldCheck"
+    },
+    {
+      "id": "b2",
+      "label": "GAF-Certified Installer",
+      "detail": "Factory-trained, manufacturer-certified",
+      "icon": "BadgeCheck"
+    },
+    {
+      "id": "b3",
+      "label": "50-Year Warranty",
+      "detail": "Workmanship + material coverage",
+      "icon": "Award"
+    },
+    {
+      "id": "b4",
+      "label": "18+ Years Experience",
+      "detail": "2,400+ roofs completed across Houston",
+      "icon": "Clock"
+    }
+  ],
+  "stats": [
+    {
+      "id": "s1",
+      "value": "18+",
+      "label": "Years in Business"
+    },
+    {
+      "id": "s2",
+      "value": "2,400",
+      "label": "Roofs Completed"
+    },
+    {
+      "id": "s3",
+      "value": "4.9",
+      "label": "Google Rating"
+    },
+    {
+      "id": "s4",
+      "value": "428",
+      "label": "Verified Reviews"
+    }
+  ],
+  "social_links": [
+    {
+      "id": "sl1",
+      "platform": "facebook",
+      "url": "https://facebook.com/summitroofing"
+    },
+    {
+      "id": "sl2",
+      "platform": "instagram",
+      "url": "https://instagram.com/summitroofing"
+    }
+  ],
+  "emergency": {
+    "enabled": true,
+    "text": "Storm damage in Houston? We respond 24/7 with free emergency tarping."
+  },
+  "final_cta": {
+    "heading": "Ready for a Roof That's Built to Last?",
+    "description": "Get a free, no-pressure inspection and a written estimate within 24 hours. If we can't fix it right, we don't take the job.",
+    "button_label": "Book My Free Inspection"
+  }
+}
