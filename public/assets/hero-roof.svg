@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b303b"/>
+      <stop offset="1" stop-color="#101216"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a4250"/>
+      <stop offset="1" stop-color="#2b303b"/>
+    </linearGradient>
+    <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4726a" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#e0202a" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="1010" cy="150" r="90" fill="#f9aea8" opacity="0.25"/>
+  <rect width="1200" height="900" fill="url(#warm)"/>
+  <g opacity="0.06">
+    <path d="M-40 700 L220 430 L480 700 Z" fill="#fff"/>
+    <path d="M380 620 L620 360 L860 620 Z" fill="#fff"/>
+    <path d="M760 700 L1020 430 L1280 700 Z" fill="#fff"/>
+  </g>
+  <path d="M120 560 L600 150 L1080 560 Z" fill="url(#roof)" stroke="#101216" stroke-width="6"/>
+  <rect x="120" y="560" width="960" height="220" fill="#1f2126"/>
+  <path d="M120 560 L1080 560 L1080 600 L120 600 Z" fill="#0c0d10"/>
+  <g fill="#3a4250">
+    <rect x="180" y="600" width="130" height="90" opacity="0.9"/>
+    <rect x="520" y="600" width="130" height="90" opacity="0.9"/>
+    <rect x="880" y="600" width="130" height="90" opacity="0.9"/>
+  </g>
+  <rect x="320" y="620" width="180" height="70" fill="#101216"/>
+  <rect x="680" y="620" width="180" height="70" fill="#101216"/>
+  <g fill="#f9aea8" opacity="0.5">
+    <rect x="345" y="730" width="130" height="50"/>
+    <rect x="705" y="730" width="130" height="50"/>
+    <rect x="205" y="672" width="80" height="80"/>
+  </g>
+</svg>

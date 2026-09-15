@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="44" viewBox="0 0 160 44" fill="none">
+  <g transform="translate(4 6)">
+    <path d="M6 18 L18 4 L30 18 Z" fill="#e0202a"/>
+    <path d="M2 20 L34 20 L34 24 L2 24 Z" fill="#101216"/>
+    <rect x="16" y="24" width="4" height="8" fill="#101216"/>
+    <path d="M6 18 L18 9 L30 18 Z" fill="#be1c22"/>
+  </g>
+  <text x="42" y="28" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="0.5" fill="#101216">SUMMIT</text>
+  <text x="42" y="40" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="600" letter-spacing="1.5" fill="#64748b">ROOFING CO.</text>
+</svg>
