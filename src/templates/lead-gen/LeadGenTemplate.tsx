@@ -451,7 +451,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
         <div className="grid grid-cols-2 gap-2">
           <PhoneCTA phone={company.phone} label="Call Now" size="md" full />
           <Button href="#quote" variant="primary" size="md" full>
-            {hero.primary_cta}
+            Get a Quote
           </Button>
         </div>
       </div>

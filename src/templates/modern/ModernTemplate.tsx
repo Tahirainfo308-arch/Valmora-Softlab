@@ -14,12 +14,12 @@ import { RatingStars } from '../../components/ui/RatingStars'
 import { ReviewCard } from '../../components/ui/ReviewCard'
 import { SectionHeading } from '../../components/ui/SectionHeading'
 import { getIcon } from '../../lib/iconMap'
-import { toTelHref } from '../../lib/utils'
 
 const navLinks: NavLink[] = [
   { label: 'Services', href: '#services' },
   { label: 'Work', href: '#projects' },
   { label: 'Reviews', href: '#reviews' },
+  { label: 'Why Us', href: '#why' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -38,7 +38,7 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
   } = config
 
   return (
-    <div className="bg-roof-50" id="top">
+    <div className="bg-roof-50 pb-24 lg:pb-0" id="top">
       <EmergencyBanner emergency={emergency} />
       <SiteHeader company={company} links={navLinks} variant="dark" />
 
@@ -65,6 +65,11 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-300">
                 {hero.subheadline}
+              </p>
+              <p className="mt-4 text-sm font-semibold text-ink-400">
+                {company.city_state}
+                {emergency.enabled ? ' · 24/7 Emergency Response' : ''}
+                {` · ${services.length} services`}
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -104,13 +109,16 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
               )}
 
               {emergency.enabled && (
-                <a
-                  href={toTelHref(emergency.phone)}
-                  className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-brand-400 hover:text-brand-300"
-                >
-                  <TriangleAlert size={16} aria-hidden="true" />
-                  {emergency.title} — {emergency.phone}
-                </a>
+                <div className="mt-8 flex flex-wrap items-center gap-3 rounded-card border border-ink-800 bg-ink-900/80 p-4">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-600/20 text-brand-400">
+                    <TriangleAlert size={18} aria-hidden="true" />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold text-white">{emergency.title}</p>
+                    <p className="text-xs text-ink-400">{emergency.description}</p>
+                  </div>
+                  <PhoneCTA phone={emergency.phone} label="Call Now" variant="on-dark" size="sm" />
+                </div>
               )}
             </div>
 
@@ -130,20 +138,30 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
             />
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((service, index) => (
-                <div
+                <article
                   key={service.id}
-                  className="group relative rounded-card border border-roof-200 bg-white p-6 shadow-card transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-600 hover:shadow-card-hover md:p-7"
+                  className="group overflow-hidden rounded-card border border-roof-200 bg-white shadow-card transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-600 hover:shadow-card-hover"
                 >
-                  {service.badge && (
-                    <span className="absolute right-4 top-4 rounded-full bg-brand-600 px-2.5 py-0.5 text-xs font-bold text-white">
-                      {service.badge}
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/10 to-transparent" />
+                    <span className="absolute left-4 top-3 font-display text-4xl font-extrabold text-white/90 transition-colors duration-200 group-hover:text-brand-400">
+                      {String(index + 1).padStart(2, '0')}
                     </span>
-                  )}
-                  <span className="font-display text-4xl font-extrabold text-roof-200 transition-colors duration-200 group-hover:text-brand-600">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
+                    {service.badge && (
+                      <span className="absolute right-4 top-4 rounded-full bg-brand-600 px-2.5 py-0.5 text-xs font-bold text-white">
+                        {service.badge}
+                      </span>
+                    )}
+                  </div>
                   <ServiceCardInner service={service} />
-                </div>
+                </article>
               ))}
             </div>
           </Container>
@@ -163,6 +181,13 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
               </div>
             ))}
           </Container>
+          {trust.badges.length > 0 && (
+            <Container className="mt-12 flex flex-wrap items-center justify-center gap-3 border-t border-roof-200 pt-8">
+              {trust.badges.map((badge) => (
+                <TrustBadge key={badge.id} badge={badge} variant="pill" />
+              ))}
+            </Container>
+          )}
         </section>
 
         {/* ---------- Projects (bold grid) ---------- */}
@@ -261,11 +286,29 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
           </Container>
         </section>
 
+        {/* ---------- Why choose us ---------- */}
+        <section id="why" className="section scroll-mt-24">
+          <Container>
+            <SectionHeading
+              eyebrow={`Why ${company.city} chooses us`}
+              title="Built Different, Backed Better"
+              description={`${company.name} pairs factory certification with ${
+                trust.warranty ? 'warranty-backed workmanship' : 'top-tier workmanship'
+              } and ${emergency.enabled ? '24/7 storm response' : 'year-round support'}.`}
+            />
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {trust.badges.map((badge) => (
+                <TrustBadge key={badge.id} badge={badge} variant="card" />
+              ))}
+            </div>
+          </Container>
+        </section>
+
         {/* ---------- Final CTA (orange band) ---------- */}
         <section id="contact" className="scroll-mt-24 bg-brand-700 py-section-sm text-white md:py-section">
           <Container narrow className="text-center">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/80">
-              {company.city_state} · {emergency.enabled ? '17 hr response' : ''}
+              {company.city_state} · {emergency.enabled ? '24/7 Emergency Response' : 'Call Us Today'}
             </p>
             <h2 className="heading-1 mt-3 text-white">{final_cta.heading}</h2>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white/90">
@@ -281,7 +324,7 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
               />
               <a
                 href="#quote"
-                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-btn border-2 border-white px-8 py-3.5 text-base font-semibold text-white transition-colors duration-150 hover:bg-white hover:text-brand-700 sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-btn border-2 border-white px-8 py-3.5 text-base font-semibold text-white transition-colors duration-150 hover:bg-white hover:text-brand-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
               >
                 {final_cta.button_label}
               </a>
@@ -303,10 +346,20 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
         dark
         licenseLine={
           trust.licensed && trust.license_number
-            ? `Licensed & insured · TX License #${trust.license_number}`
+            ? `Licensed & insured · ${company.state} License #${trust.license_number}`
             : undefined
         }
       />
+
+      {/* ---------- Mobile sticky action bar ---------- */}
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-roof-200 bg-white/95 p-3 backdrop-blur lg:hidden">
+        <div className="grid grid-cols-2 gap-2">
+          <PhoneCTA phone={company.phone} label="Call Now" size="md" full />
+          <Button href="#quote" variant="primary" size="md" full>
+            Get a Quote
+          </Button>
+        </div>
+      </div>
     </div>
   )
 }
@@ -318,7 +371,7 @@ interface ServiceCardInnerProps {
 function ServiceCardInner({ service }: ServiceCardInnerProps) {
   const Icon = getIcon(service.icon)
   return (
-    <div className="mt-4 flex items-start gap-4">
+    <div className="flex items-start gap-4 p-5 md:p-6">
       <span className="icon-badge">
         {createElement(Icon, { size: 22, 'aria-hidden': true })}
       </span>
