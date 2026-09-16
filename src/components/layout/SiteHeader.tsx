@@ -4,6 +4,9 @@ import type { CompanyInfo } from '../../types'
 import { cn, toTelHref } from '../../lib/utils'
 import { Container } from '../ui/Container'
 
+import { Logo } from '../ui/Logo'
+import { PhoneCTA } from '../ui/PhoneCTA'
+
 export interface NavLink {
   label: string
   href: string
@@ -14,36 +17,6 @@ interface SiteHeaderProps {
   links: NavLink[]
   variant?: 'light' | 'dark'
   sticky?: boolean
-}
-
-export function Logo({ company, dark = false }: { company: CompanyInfo; dark?: boolean }) {
-  return (
-    <a href="#top" className="flex items-center gap-2.5" aria-label={`${company.name} — home`}>
-      {company.logo_url ? (
-        <img
-          src={company.logo_url}
-          alt=""
-          className="h-10 w-auto object-contain"
-        />
-      ) : (
-        <span className="flex h-10 w-10 items-center justify-center rounded-md bg-brand-700 font-display text-sm font-bold text-white">
-          {company.name
-            .split(' ')
-            .slice(0, 2)
-            .map((word) => word[0])
-            .join('')}
-        </span>
-      )}
-      <span
-        className={cn(
-          'font-display text-xl font-bold tracking-tight',
-          dark ? 'text-white' : 'text-ink-950',
-        )}
-      >
-        {company.name}
-      </span>
-    </a>
-  )
 }
 
 export function SiteHeader({
@@ -91,10 +64,7 @@ export function SiteHeader({
             <PhoneCall size={15} aria-hidden="true" />
             Call {company.city_state}
           </a>
-          <a href={toTelHref(company.phone)} className="btn btn-call btn-sm hidden md:inline-flex">
-            <PhoneCall size={15} aria-hidden="true" />
-            {company.phone}
-          </a>
+          <PhoneCTA phone={company.phone} size="sm" className="hidden md:inline-flex" />
           <button
             type="button"
             className={cn(
@@ -138,13 +108,13 @@ export function SiteHeader({
                 {link.label}
               </a>
             ))}
-            <a
-              href={toTelHref(company.phone)}
-              className="btn btn-call btn-md mt-3 w-full"
-            >
-              <PhoneCall size={16} aria-hidden="true" />
-              Call {company.phone}
-            </a>
+            <PhoneCTA
+              phone={company.phone}
+              label={`Call ${company.phone}`}
+              size="md"
+              full
+              className="mt-3"
+            />
           </Container>
         </nav>
       )}

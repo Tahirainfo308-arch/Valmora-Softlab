@@ -2,7 +2,7 @@ import { Clock, ExternalLink, Mail, MapPin, PhoneCall } from 'lucide-react'
 import type { CompanyInfo, ContactInfo, SocialChannels } from '../../types'
 import { cn, toTelHref } from '../../lib/utils'
 import { Container } from '../ui/Container'
-import { Logo } from './SiteHeader'
+import { Logo } from '../ui/Logo'
 import type { NavLink } from './SiteHeader'
 
 interface SiteFooterProps {

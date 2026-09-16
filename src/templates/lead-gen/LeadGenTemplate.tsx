@@ -4,14 +4,16 @@ import { EmergencyBanner } from '../../components/layout/EmergencyBanner'
 import { SiteHeader } from '../../components/layout/SiteHeader'
 import type { NavLink } from '../../components/layout/SiteHeader'
 import { SiteFooter } from '../../components/layout/SiteFooter'
+import { Button } from '../../components/ui/Button'
 import { Container } from '../../components/ui/Container'
+import { PhoneCTA } from '../../components/ui/PhoneCTA'
+import { TrustBadge } from '../../components/ui/TrustBadge'
 import { QuoteForm } from '../../components/ui/QuoteForm'
 import { RatingStars } from '../../components/ui/RatingStars'
 import { ReviewCard } from '../../components/ui/ReviewCard'
 import { SectionHeading } from '../../components/ui/SectionHeading'
 import { ServiceCard } from '../../components/ui/ServiceCard'
 import { ProjectCard } from '../../components/ui/ProjectCard'
-import { getIcon } from '../../lib/iconMap'
 import { toTelHref } from '../../lib/utils'
 
 const navLinks: NavLink[] = [
@@ -69,20 +71,17 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#quote"
-                  className="btn btn-primary btn-lg btn-full"
-                >
-                  {hero.primary_cta}
-                  <ArrowRight size={18} aria-hidden="true" />
-                </a>
-                <a
-                  href={toTelHref(company.phone)}
-                  className="btn btn-outline btn-lg btn-full"
-                >
-                  <PhoneCall size={18} aria-hidden="true" />
-                  {hero.secondary_cta}
-                </a>
+                <Button href="#quote" variant="primary" size="lg" full>
+                {hero.primary_cta}
+                <ArrowRight size={18} aria-hidden="true" />
+              </Button>
+              <PhoneCTA
+                phone={company.phone}
+                label={hero.secondary_cta}
+                variant="outline"
+                size="lg"
+                full
+              />
               </div>
 
               {hero.perks && hero.perks.length > 0 && (
@@ -121,22 +120,9 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
         {/* ---------- Trust bar ---------- */}
         <section className="border-y border-roof-200 bg-white">
           <Container className="grid grid-cols-2 gap-6 py-8 md:grid-cols-4 md:gap-4">
-            {trust.badges.map((badge) => {
-              const Icon = getIcon(badge.icon)
-              return (
-                <div key={badge.id} className="flex items-center gap-3">
-                  <span className="icon-badge shrink-0">
-                    <Icon size={20} aria-hidden="true" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-bold text-ink-900">{badge.label}</p>
-                    {badge.detail && (
-                      <p className="text-xs text-ink-500">{badge.detail}</p>
-                    )}
-                  </div>
-                </div>
-              )
-            })}
+            {trust.badges.map((badge) => (
+              <TrustBadge key={badge.id} badge={badge} variant="row" />
+            ))}
           </Container>
         </section>
 
@@ -268,16 +254,16 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               {final_cta.description}
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <a href="#quote" className="btn btn-primary btn-lg btn-full">
+              <Button href="#quote" variant="primary" size="lg" full>
                 {final_cta.button_label}
-              </a>
-              <a
-                href={toTelHref(company.phone)}
-                className="btn btn-on-dark btn-lg btn-full"
-              >
-                <PhoneCall size={18} aria-hidden="true" />
-                Call {company.phone}
-              </a>
+              </Button>
+              <PhoneCTA
+                phone={company.phone}
+                label={`Call ${company.phone}`}
+                variant="on-dark"
+                size="lg"
+                full
+              />
             </div>
             {emergency.enabled && (
               <p className="mt-6 text-sm text-ink-300">

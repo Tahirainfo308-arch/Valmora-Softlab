@@ -1,11 +1,14 @@
 import { createElement } from 'react'
-import { PhoneCall, TriangleAlert, ArrowRight } from 'lucide-react'
+import { TriangleAlert, ArrowRight } from 'lucide-react'
 import type { CompanyConfig, Service } from '../../types'
 import { EmergencyBanner } from '../../components/layout/EmergencyBanner'
 import { SiteHeader } from '../../components/layout/SiteHeader'
 import type { NavLink } from '../../components/layout/SiteHeader'
 import { SiteFooter } from '../../components/layout/SiteFooter'
+import { Button } from '../../components/ui/Button'
 import { Container } from '../../components/ui/Container'
+import { PhoneCTA } from '../../components/ui/PhoneCTA'
+import { TrustBadge } from '../../components/ui/TrustBadge'
 import { QuoteForm } from '../../components/ui/QuoteForm'
 import { RatingStars } from '../../components/ui/RatingStars'
 import { ReviewCard } from '../../components/ui/ReviewCard'
@@ -65,17 +68,17 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#quote" className="btn btn-primary btn-lg btn-full">
+                <Button href="#quote" variant="primary" size="lg" full>
                   {hero.primary_cta}
                   <ArrowRight size={18} aria-hidden="true" />
-                </a>
-                <a
-                  href={toTelHref(company.phone)}
-                  className="btn btn-on-dark btn-lg btn-full"
-                >
-                  <PhoneCall size={18} aria-hidden="true" />
-                  {hero.secondary_cta}
-                </a>
+                </Button>
+                <PhoneCTA
+                  phone={company.phone}
+                  label={hero.secondary_cta}
+                  variant="on-dark"
+                  size="lg"
+                  full
+                />
               </div>
 
               <ul className="mt-10 flex flex-wrap gap-2.5">
@@ -94,22 +97,9 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
 
               {trust.badges && (
                 <div className="mt-8 flex flex-wrap gap-2">
-                  {trust.badges.slice(0, 3).map((badge) => {
-                    const Icon = getIcon(badge.icon)
-                    return (
-                      <span
-                        key={badge.id}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-ink-800 bg-ink-900/80 px-3 py-1 text-xs font-semibold text-ink-200"
-                      >
-                        {createElement(Icon, {
-                          size: 13,
-                          className: 'text-brand-400',
-                          'aria-hidden': true,
-                        })}
-                        {badge.label}
-                      </span>
-                    )
-                  })}
+                  {trust.badges.slice(0, 3).map((badge) => (
+                    <TrustBadge key={badge.id} badge={badge} variant="dark" />
+                  ))}
                 </div>
               )}
 
@@ -280,13 +270,13 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
               {final_cta.description}
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <a
-                href={toTelHref(company.phone)}
-                className="btn btn-on-dark btn-lg btn-full"
-              >
-                <PhoneCall size={18} aria-hidden="true" />
-                Call {company.phone}
-              </a>
+              <PhoneCTA
+                phone={company.phone}
+                label={`Call ${company.phone}`}
+                variant="on-dark"
+                size="lg"
+                full
+              />
               <a
                 href="#quote"
                 className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-btn border-2 border-white px-8 py-3.5 text-base font-semibold text-white transition-colors duration-150 hover:bg-white hover:text-brand-700 sm:w-auto"

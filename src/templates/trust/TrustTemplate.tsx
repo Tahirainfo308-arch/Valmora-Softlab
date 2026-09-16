@@ -14,11 +14,13 @@ import { SiteHeader } from '../../components/layout/SiteHeader'
 import type { NavLink } from '../../components/layout/SiteHeader'
 import { SiteFooter } from '../../components/layout/SiteFooter'
 import { Container } from '../../components/ui/Container'
+import { Button } from '../../components/ui/Button'
+import { PhoneCTA } from '../../components/ui/PhoneCTA'
+import { TrustBadge } from '../../components/ui/TrustBadge'
 import { RatingStars } from '../../components/ui/RatingStars'
 import { SectionHeading } from '../../components/ui/SectionHeading'
 import { TestimonialCard } from '../../components/ui/TestimonialCard'
 import { ProjectCard } from '../../components/ui/ProjectCard'
-import { getIcon } from '../../lib/iconMap'
 import { toTelHref } from '../../lib/utils'
 
 const navLinks: NavLink[] = [
@@ -93,12 +95,12 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#contact" className="btn btn-secondary btn-lg btn-full">
+                <Button href="#contact" variant="secondary" size="lg" full>
                   Book a Free Inspection
-                </a>
-                <a href="#projects" className="btn btn-outline btn-lg btn-full">
+                </Button>
+                <Button href="#projects" variant="outline" size="lg" full>
                   See Our Work
-                </a>
+                </Button>
               </div>
             </div>
 
@@ -145,20 +147,9 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
               description="A roofing company is only as good as the workmanship behind it. Here's what backs every project we take on."
             />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {trust.badges.map((badge) => {
-                const Icon = getIcon(badge.icon)
-                return (
-                  <div key={badge.id} className="card card-hover p-6 text-center">
-                    <span className="icon-badge mx-auto">
-                      <Icon size={22} aria-hidden="true" />
-                    </span>
-                    <h3 className="heading-4 mt-4">{badge.label}</h3>
-                    {badge.detail && (
-                      <p className="mt-1.5 text-sm text-ink-600">{badge.detail}</p>
-                    )}
-                  </div>
-                )
-              })}
+              {trust.badges.map((badge) => (
+                <TrustBadge key={badge.id} badge={badge} variant="card" />
+              ))}
             </div>
           </Container>
         </section>
@@ -374,18 +365,16 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
                 {final_cta.description}
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <a
-                  href={toTelHref(company.phone)}
-                  className="btn btn-primary btn-lg btn-full"
-                >
-                  Call {company.phone}
-                </a>
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="btn btn-on-dark btn-lg btn-full"
-                >
+                <PhoneCTA
+                  phone={company.phone}
+                  label={`Call ${company.phone}`}
+                  variant="primary"
+                  size="lg"
+                  full
+                />
+                <Button href={`mailto:${contact.email}`} variant="on-dark" size="lg" full>
                   Email Us
-                </a>
+                </Button>
               </div>
             </div>
           </Container>

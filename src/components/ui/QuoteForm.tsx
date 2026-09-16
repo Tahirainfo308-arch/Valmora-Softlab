@@ -3,6 +3,7 @@ import type { FormEvent } from 'react'
 import { CircleCheck, ShieldCheck } from 'lucide-react'
 import type { CompanyInfo, Service } from '../../types'
 import { cn, toTelHref } from '../../lib/utils'
+import { Button } from './Button'
 
 interface QuoteFormProps {
   company: CompanyInfo
@@ -135,9 +136,9 @@ export function QuoteForm({
             />
           </div>
 
-          <button type="submit" className="btn btn-primary btn-lg btn-full">
+          <Button type="submit" variant="primary" size="lg" full>
             {buttonLabel}
-          </button>
+          </Button>
           <p className="text-center text-xs text-ink-400">
             No pressure. No spam. A licensed inspector will reach out.
           </p>
