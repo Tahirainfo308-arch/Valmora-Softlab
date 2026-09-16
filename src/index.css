@@ -462,7 +462,7 @@
   }
 
   .field-textarea {
-    @apply min-h-[8rem] resize-y;
+    @apply min-h-[5.5rem] resize-y;
   }
 
   .field-hint {
@@ -519,7 +519,7 @@
 
   /* Emergency banner (top strip). */
   .emergency-banner {
-    @apply bg-brand-700 py-2.5 text-center text-sm font-semibold
+    @apply bg-brand-700 py-2 text-center text-sm font-semibold
            tracking-wide text-white;
   }
 

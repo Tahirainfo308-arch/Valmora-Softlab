@@ -64,7 +64,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
       {/* ---------- Emergency + contact strips ---------- */}
       <EmergencyBanner emergency={emergency} />
       <div className="border-b border-roof-200 bg-ink-950 text-ink-300">
-        <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-2 text-xs font-medium">
+        <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-0.5 text-[11px] font-medium">
           <span className="inline-flex items-center gap-1.5">
             <ShieldCheck size={13} className="text-brand-400" aria-hidden="true" />
             {company.marquee_phrase ?? 'Licensed & Insured'}
@@ -90,10 +90,15 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
         </Container>
       </div>
 
-      <SiteHeader company={company} links={navLinks} variant="light" />
+      <SiteHeader
+        company={company}
+        links={navLinks}
+        variant="light"
+        primaryAction={{ label: 'Get Free Estimate', href: '#quote' }}
+      />
 
       <main>
-        {/* ---------- Hero ---------- */}
+        {/* ---------- Hero: 45% content / 55% quote form — full form above the fold ---------- */}
         <section className="relative overflow-hidden">
           {hero.image && (
             <img
@@ -103,13 +108,13 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.07] mix-blend-multiply"
             />
           )}
-          <Container className="relative grid items-center gap-14 py-12 md:py-20 lg:grid-cols-[1.05fr_0.95fr]">
+          <Container className="relative grid items-center gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.22fr)] lg:gap-16 lg:py-6">
             <div>
               {hero.eyebrow && <p className="eyebrow">{hero.eyebrow}</p>}
               <h1 className="heading-hero">{hero.headline}</h1>
-              <p className="lead mt-5">{hero.subheadline}</p>
+              <p className="lead mt-3">{hero.subheadline}</p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
+              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
                 <span className="rating-chip">
                   <GoogleMark />
                   <span className="font-display font-extrabold">{ratings.google_rating}</span>
@@ -120,7 +125,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                 </span>
               </div>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <Button href="#quote" variant="primary" size="lg" full>
                   {hero.primary_cta}
                   <ArrowRight size={18} aria-hidden="true" />
@@ -135,7 +140,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               </div>
 
               {hero.perks && hero.perks.length > 0 && (
-                <ul className="mt-8 flex flex-wrap gap-2.5">
+                <ul className="mt-5 flex flex-wrap gap-2.5">
                   {hero.perks.map((perk) => (
                     <li key={perk} className="chip">
                       <ShieldCheck size={14} className="text-brand-700" aria-hidden="true" />
@@ -144,57 +149,15 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                   ))}
                 </ul>
               )}
-
-              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-semibold text-ink-700">
-                {trust.licensed && trust.insured && (
-                  <span className="inline-flex items-center gap-2">
-                    <ShieldCheck size={18} className="text-brand-700" aria-hidden="true" />
-                    Licensed &amp; Insured
-                  </span>
-                )}
-                {trust.warranty && (
-                  <span className="inline-flex items-center gap-2">
-                    <Award size={18} className="text-brand-700" aria-hidden="true" />
-                    {trust.warranty_text}
-                  </span>
-                )}
-              </div>
             </div>
 
-            <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl shadow-card ring-1 ring-ink-950/5">
-                <img
-                  src={hero.image ?? '/assets/hero-roof.svg'}
-                  alt={`${company.name} roof on a home in ${company.city}`}
-                  className="aspect-[4/3] w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/55 via-transparent to-transparent" />
-                {hero.perks && hero.perks.length > 0 && (
-                  <span className="absolute right-4 top-4 rounded-full bg-brand-600 px-3 py-1 text-xs font-bold text-white shadow-card">
-                    {hero.perks[0]}
-                  </span>
-                )}
-                <div className="absolute left-4 top-4 flex items-center gap-3 rounded-card border border-roof-100 bg-white p-3 pr-5 shadow-card">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-50 text-brand-700">
-                    <GoogleMark size={16} />
-                  </span>
-                  <div>
-                    <p className="flex items-center gap-2 text-sm font-bold text-ink-950">
-                      {ratings.google_rating}
-                      <RatingStars rating={ratings.google_rating} size={13} />
-                    </p>
-                    <p className="text-xs text-ink-500">{ratings.review_count} Google reviews</p>
-                  </div>
-                </div>
-              </div>
-
-              <div id="quote" className="scroll-mt-24">
-                <QuoteForm
-                  company={company}
-                  services={services}
-                  className="relative z-10 -mt-16 shadow-card sm:mx-4 sm:-mt-20 lg:mx-6 lg:-mt-24"
-                />
-              </div>
+            <div id="quote" className="scroll-mt-24">
+              <QuoteForm
+                company={company}
+                services={services}
+                compact
+                className="shadow-card-hover ring-1 ring-ink-950/5"
+              />
             </div>
           </Container>
         </section>
@@ -247,6 +210,24 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
           </Container>
         </section>
 
+        {/* ---------- After-services CTA ---------- */}
+        <section className="py-10">
+          <Container>
+            <div className="flex flex-col items-center justify-between gap-5 rounded-2xl border border-roof-200 bg-white px-6 py-7 text-center shadow-soft sm:flex-row sm:gap-8 sm:text-left md:px-10">
+              <div>
+                <h2 className="heading-3 text-xl">Not sure what your roof needs?</h2>
+                <p className="mt-1 text-sm text-ink-600">
+                  Free, itemized estimates from licensed {company.city} roofers — usually within
+                  24 hours.
+                </p>
+              </div>
+              <Button href="#quote" variant="primary" size="lg" full>
+                {hero.primary_cta}
+              </Button>
+            </div>
+          </Container>
+        </section>
+
         {/* ---------- Why choose us ---------- */}
         <section id="why" className="section section-alt scroll-mt-24">
           <Container>
@@ -287,6 +268,23 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* ---------- After-projects CTA ---------- */}
+        <section className="py-10">
+          <Container>
+            <div className="flex flex-col items-center justify-between gap-5 rounded-2xl border border-roof-200 bg-white px-6 py-7 text-center shadow-soft sm:flex-row sm:gap-8 sm:text-left md:px-10">
+              <div>
+                <h2 className="heading-3 text-xl">Wondering what your project would cost?</h2>
+                <p className="mt-1 text-sm text-ink-600">
+                  Free inspections across {company.city_state} — honest numbers, no pressure.
+                </p>
+              </div>
+              <Button href="#quote" variant="primary" size="lg" full>
+                {hero.primary_cta}
+              </Button>
             </div>
           </Container>
         </section>

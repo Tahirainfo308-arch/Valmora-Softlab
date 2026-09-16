@@ -6,6 +6,7 @@ import { Container } from '../ui/Container'
 
 import { Logo } from '../ui/Logo'
 import { PhoneCTA } from '../ui/PhoneCTA'
+import { Button } from '../ui/Button'
 
 export interface NavLink {
   label: string
@@ -17,6 +18,8 @@ interface SiteHeaderProps {
   links: NavLink[]
   variant?: 'light' | 'dark'
   sticky?: boolean
+  /** Optional primary action (e.g. "Get Free Estimate") shown next to the call button. */
+  primaryAction?: { label: string; href: string }
 }
 
 export function SiteHeader({
@@ -24,6 +27,7 @@ export function SiteHeader({
   links,
   variant = 'light',
   sticky = true,
+  primaryAction,
 }: SiteHeaderProps) {
   const [open, setOpen] = useState(false)
   const dark = variant === 'dark'
@@ -59,12 +63,21 @@ export function SiteHeader({
         <div className="flex items-center gap-2">
           <a
             href={toTelHref(company.phone)}
-            className={cn('nav-link hidden items-center gap-1.5 sm:inline-flex', dark && 'text-ink-200 hover:text-brand-400')}
+            className={cn('nav-link hidden items-center gap-1.5 xl:inline-flex', dark && 'text-ink-200 hover:text-brand-400')}
           >
             <PhoneCall size={15} aria-hidden="true" />
             Call {company.city_state}
           </a>
           <PhoneCTA phone={company.phone} size="sm" className="hidden md:inline-flex" />
+          {primaryAction && (
+            <Button
+              href={primaryAction.href}
+              size="sm"
+              className="hidden lg:inline-flex"
+            >
+              {primaryAction.label}
+            </Button>
+          )}
           <button
             type="button"
             className={cn(
@@ -115,6 +128,16 @@ export function SiteHeader({
               full
               className="mt-3"
             />
+            {primaryAction && (
+              <Button
+                href={primaryAction.href}
+                size="md"
+                full
+                className="mt-2"
+              >
+                {primaryAction.label}
+              </Button>
+            )}
           </Container>
         </nav>
       )}

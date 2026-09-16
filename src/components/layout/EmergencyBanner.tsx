@@ -12,8 +12,8 @@ export function EmergencyBanner({ emergency }: EmergencyBannerProps) {
 
   return (
     <div className="emergency-banner">
-      <Container className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-        <TriangleAlert size={16} className="shrink-0" aria-hidden="true" />
+      <Container className="flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5">
+        <TriangleAlert size={15} className="shrink-0" aria-hidden="true" />
         <span className="font-bold">{emergency.title}</span>
         <span className="hidden sm:inline" aria-hidden="true">
           —
@@ -23,7 +23,7 @@ export function EmergencyBanner({ emergency }: EmergencyBannerProps) {
           href={toTelHref(emergency.phone)}
           className="inline-flex items-center gap-1 font-bold underline decoration-2 underline-offset-2 hover:text-white/85"
         >
-          <PhoneCall size={14} aria-hidden="true" />
+          <PhoneCall size={13} aria-hidden="true" />
           {emergency.phone}
         </a>
       </Container>
