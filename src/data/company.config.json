@@ -9,6 +9,7 @@
     "city_state": "Houston, TX",
     "logo_url": "/assets/logo.svg",
     "years_in_business": 18,
+    "emergency_service": true,
     "marquee_phrase": "Licensed & Insured — GAF-Certified Installers"
   },
   "hero": {

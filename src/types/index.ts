@@ -22,6 +22,8 @@ export interface CompanyInfo {
   city_state: string
   logo_url?: string
   years_in_business?: number
+  /** Whether the company advertises 24/7 emergency service. */
+  emergency_service?: boolean
   marquee_phrase?: string
 }
 
