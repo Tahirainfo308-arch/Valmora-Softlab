@@ -139,7 +139,7 @@ export interface SocialChannels {
   google?: string
 }
 
-/** Standalone metric, e.g. "2,400+ Roofs Completed". */
+/** Standalone metric, e.g. "3,500+ Roofs Completed". */
 export interface Stat {
   id: string
   value: string
@@ -153,8 +153,13 @@ export interface FinalCTA {
   button_label: string
 }
 
+/** Selection key for the three built-in site templates. */
+export type TemplateId = 'template-1' | 'template-2' | 'template-3'
+
 /** Top-level business data document for every Velmora customer. */
 export interface CompanyConfig {
+  /** Which template renders this site. Falls back to "template-1". */
+  template?: TemplateId
   company: CompanyInfo
   hero: HeroContent
   ratings: RatingSummary

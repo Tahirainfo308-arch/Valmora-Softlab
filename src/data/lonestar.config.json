@@ -1,0 +1,246 @@
+{
+  "template": "template-3",
+  "company": {
+    "name": "Lone Star Roofing & Restoration",
+    "phone": "(214) 555-0174",
+    "email": "info@lonestarroofingtx.com",
+    "address": "2500 Cedar Springs Rd, Dallas, TX 75201",
+    "city": "Dallas",
+    "state": "TX",
+    "city_state": "Dallas, TX",
+    "logo_url": "/assets/logo.svg",
+    "years_in_business": 22,
+    "emergency_service": true,
+    "marquee_phrase": "Licensed & Insured — CertainTeed Certified Installers"
+  },
+  "hero": {
+    "eyebrow": "Dallas-Fort Worth's Roofing Specialists",
+    "headline": "Roofed Right, For the Long Haul",
+    "subheadline": "Free roof audits, fair pricing, and certified installation crews. From storm damage to full replacements, we protect what matters most — across the entire DFW metroplex.",
+    "image": "/assets/hero-roof.svg",
+    "primary_cta": "Get My Free Roof Audit",
+    "secondary_cta": "Call Us Now",
+    "perks": ["Free Roof Audit", "0% Financing Available", "Insurance Claim Support"]
+  },
+  "ratings": {
+    "google_rating": 4.8,
+    "review_count": 367,
+    "review_url": "https://www.google.com/search?q=Lone+Star+Roofing+and+Restoration+Dallas"
+  },
+  "services": [
+    {
+      "id": "full-replacement",
+      "name": "Roof Replacement",
+      "description": "Complete tear-off and re-roof with CertainTeed architectural shingles, metal, or tile — fully backed by manufacturer warranties.",
+      "icon": "Roof",
+      "image": "/assets/service-placeholder.svg",
+      "badge": "Best Seller"
+    },
+    {
+      "id": "wind-hail",
+      "name": "Wind & Hail Repair",
+      "description": "Fast DFW storm response. We photograph the damage, file the claim, and negotiate with your adjuster — one less thing on your plate.",
+      "icon": "CloudRainWind",
+      "image": "/assets/service-placeholder.svg",
+      "badge": "Rapid Response"
+    },
+    {
+      "id": "leak-repair",
+      "name": "Leak Detection & Repair",
+      "description": "Pinpoint leaks with thermal imaging and moisture scans before they ruin ceilings, insulation, and everything below.",
+      "icon": "Search",
+      "image": "/assets/service-placeholder.svg"
+    },
+    {
+      "id": "metal-roofing",
+      "name": "Metal Roofing",
+      "description": "Standing-seam and screw-down systems rated for 60+ years — perfect for Dallas hail zones and homeowners who hate maintenance.",
+      "icon": "Droplets",
+      "image": "/assets/service-placeholder.svg"
+    },
+    {
+      "id": "gutters",
+      "name": "Seamless Gutters",
+      "description": "Custom-formed gutters and leaf guards sized to handle DFW cloudbursts without overflowing.",
+      "icon": "Fan",
+      "image": "/assets/service-placeholder.svg"
+    },
+    {
+      "id": "ventilation",
+      "name": "Attic & Ventilation",
+      "description": "Balanced intake and exhaust ventilation that cuts attic heat, protects shingles, and trims cooling bills.",
+      "icon": "Wrench",
+      "image": "/assets/service-placeholder.svg"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "ls-r1",
+      "author": "Angela P.",
+      "location": "Plano, TX",
+      "rating": 5,
+      "date": "3 weeks ago",
+      "text": "Hail wrecked our ridge caps and Lone Star had a claim filed before our neighbors even got quotes. The crew was polite, tarped everything, and delivered ahead of schedule.",
+      "service": "Wind & Hail Repair"
+    },
+    {
+      "id": "ls-r2",
+      "author": "Carlos M.",
+      "location": "Frisco, TX",
+      "rating": 5,
+      "date": "1 month ago",
+      "text": "They repaired a valley leak we'd chased for two years. Thermal imaging found it in ten minutes. Honest people, fair price.",
+      "service": "Leak Detection & Repair"
+    },
+    {
+      "id": "ls-r3",
+      "author": "Denise W.",
+      "location": "Fort Worth, TX",
+      "rating": 5,
+      "date": "2 months ago",
+      "text": "Beautiful metal roof and a spotless site. Walked us through every material option and didn't push the upgrade. Rare integrity.",
+      "service": "Metal Roofing"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "ls-t1",
+      "name": "Hector Villanueva",
+      "location": "Irving, TX",
+      "rating": 5,
+      "text": "After a wildfire-adjacent cleanup and a full re-roof, Lone Star treated our 1960s home like their own. They matched the neighborhood character and the roof is stunning.",
+      "project_type": "Full Roof Replacement"
+    },
+    {
+      "id": "ls-t2",
+      "name": "Maureen & George Burns",
+      "location": "Garland, TX",
+      "rating": 5,
+      "text": "Storm panels arrived on a Sunday and their response crew was on our roof Monday morning. The adjuster fight? They handled the whole thing. We just signed.",
+      "project_type": "Storm Damage Repair"
+    },
+    {
+      "id": "ls-t3",
+      "name": "Tara Okafor",
+      "location": "Dallas, TX",
+      "rating": 5,
+      "text": "We run 18 rental units across Dallas and Lone Star maintains every one of them. Their inspection program caught two developing leaks before they became disasters.",
+      "project_type": "Commercial Roof Maintenance"
+    }
+  ],
+  "projects": [
+    {
+      "id": "ls-p1",
+      "title": "CertainTeed Landmark Replacement",
+      "location": "Plano, TX",
+      "before_image": "/assets/roof-before.svg",
+      "after_image": "/assets/roof-after.svg",
+      "image": "/projects/plano-roof.svg",
+      "description": "Full replacement with CertainTeed Landmark Pro in driftwood. New ridge vent, snow-country underlayment, and drip edge throughout.",
+      "type": "Roof Replacement",
+      "year": "2025",
+      "result": "Completed in 3 days"
+    },
+    {
+      "id": "ls-p2",
+      "title": "Hail Recovery — Frisco Estate",
+      "location": "Frisco, TX",
+      "before_image": "/assets/roof-before.svg",
+      "after_image": "/assets/roof-after.svg",
+      "image": "/projects/frisco-hail.svg",
+      "description": "Class 4 impact-resistant shingles over a full synthetic underlayment after a spring hailstorm pounded the neighborhood.",
+      "type": "Storm Damage Repair",
+      "year": "2025",
+      "result": "Claim settled in 4 days"
+    },
+    {
+      "id": "ls-p3",
+      "title": "Standing-Seam Install",
+      "location": "Fort Worth, TX",
+      "before_image": "/assets/roof-before.svg",
+      "after_image": "/assets/roof-after.svg",
+      "image": "/projects/ftworth-metal.svg",
+      "description": "24-gauge standing-seam metal roof with concealed fasteners and a 50-year paint warranty.",
+      "type": "Metal Roof Installation",
+      "year": "2024",
+      "result": "Completed in 4 days"
+    }
+  ],
+  "trust": {
+    "licensed": true,
+    "insured": true,
+    "warranty": true,
+    "warranty_text": "Every roof we install carries a 30-year workmanship and manufacturer materials warranty.",
+    "license_number": "TXRC-889233",
+    "badges": [
+      {
+        "id": "ls-b1",
+        "label": "Licensed & Insured",
+        "detail": "Texas License #TXRC-889233",
+        "icon": "ShieldCheck"
+      },
+      {
+        "id": "ls-b2",
+        "label": "CertainTeed-Certified",
+        "detail": "Master contractor, factory-trained crews",
+        "icon": "BadgeCheck"
+      },
+      {
+        "id": "ls-b3",
+        "label": "30-Year Warranty",
+        "detail": "Workmanship + material coverage",
+        "icon": "Award"
+      },
+      {
+        "id": "ls-b4",
+        "label": "22+ Years Experience",
+        "detail": "3,100+ roofs completed across DFW",
+        "icon": "Clock"
+      }
+    ]
+  },
+  "emergency": {
+    "enabled": true,
+    "title": "24/7 Storm Response for Dallas-Fort Worth",
+    "description": "Hail or high-wind damage in the metroplex? We're on site within 4 hours with temporary tarping.",
+    "phone": "(214) 555-0175"
+  },
+  "contact": {
+    "email": "info@lonestarroofingtx.com",
+    "phone": "(214) 555-0174",
+    "address": "2500 Cedar Springs Rd, Dallas, TX 75201",
+    "hours": "Mon–Sat: 8:00am–6:00pm"
+  },
+  "social": {
+    "facebook": "https://facebook.com/lonestarroofing",
+    "instagram": "https://instagram.com/lonestarroofing",
+    "google": "https://www.google.com/search?q=Lone+Star+Roofing+and+Restoration+Dallas"
+  },
+  "stats": [
+    {
+      "id": "ls-s1",
+      "value": "22+",
+      "label": "Years in Business"
+    },
+    {
+      "id": "ls-s2",
+      "value": "3,100+",
+      "label": "Roofs Completed"
+    },
+    {
+      "id": "ls-s3",
+      "value": "4.8",
+      "label": "Google Rating"
+    },
+    {
+      "id": "ls-s4",
+      "value": "367",
+      "label": "Verified Reviews"
+    }
+  ],
+  "final_cta": {
+    "heading": "Ready for a Roof That Earns Its Keep?",
+    "description": "Book a free, no-pressure audit and get a written estimate within 48 hours. If we can't do the job right, we hand you a second opinion.",
+    "button_label": "Book My Free Roof Audit"
+  }
+}

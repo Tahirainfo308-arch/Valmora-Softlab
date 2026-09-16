@@ -68,7 +68,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
           <span className="inline-flex items-center gap-1.5">
             <ShieldCheck size={13} className="text-brand-400" aria-hidden="true" />
             {company.marquee_phrase ?? 'Licensed & Insured'}
-            {trust.license_number ? ` · TX# ${trust.license_number}` : ''}
+            {trust.license_number ? ` · ${company.state}# ${trust.license_number}` : ''}
           </span>
           <span className="hidden items-center gap-5 sm:inline-flex">
             <span className="inline-flex items-center gap-1.5">
@@ -395,8 +395,9 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               <h3 className="heading-3 mt-5">Backed for a Lifetime</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-600">
                 {trust.warranty_text} Every install is documented with photos,
-                signed off by a Texas-licensed foreman, and registered with the
-                manufacturer so the coverage stays with the roof — not the owner.
+                signed off by a {company.state}-licensed foreman, and registered
+                with the manufacturer so the coverage stays with the roof — not
+                the owner.
               </p>
               <div className="mt-6 grid grid-cols-2 gap-3 border-t border-roof-200 pt-6">
                 {stats.map((stat) => (

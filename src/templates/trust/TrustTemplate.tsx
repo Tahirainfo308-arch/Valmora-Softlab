@@ -314,7 +314,7 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
                 </div>
                 <div>
                   <p className="font-display text-2xl font-bold text-brand-700">
-                    {stats[1]?.value ?? '2,400'}
+                    {stats[1]?.value ?? '—'}
                   </p>
                   <p className="text-xs font-medium text-ink-500">Roofs</p>
                 </div>
