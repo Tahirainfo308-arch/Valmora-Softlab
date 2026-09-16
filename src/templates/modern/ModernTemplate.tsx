@@ -125,8 +125,8 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
           <Container>
             <SectionHeading
               eyebrow="What we do"
-              title="Built for Whatever Texas Throws At It"
-              description="Six specialized services. One reliable crew. Hover any tile to see what we handle."
+              title={`Built for Whatever ${company.state} Throws At It`}
+              description={`${services.length} specialized services. One reliable crew. Hover any tile to see what we handle.`}
             />
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((service, index) => (
@@ -171,7 +171,7 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
             <SectionHeading
               eyebrow="Selected work"
               title="Work That Speaks for Itself"
-              description="A few recent projects across the Houston area."
+              description={`A few recent projects across the ${company.city} area.`}
             />
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((project, index) => (
@@ -223,7 +223,9 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
                 <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-400">
                   What homeowners say
                 </p>
-                <h2 className="heading-2 mt-3 text-white">4.9 Out of 5 — and Counting</h2>
+                <h2 className="heading-2 mt-3 text-white">
+                  {ratings.google_rating} Out of 5 — and Counting
+                </h2>
                 <p className="mt-3 max-w-lg text-ink-300">
                   Every roof comes with a promise behind it. Here's how recent
                   customers rate the experience.

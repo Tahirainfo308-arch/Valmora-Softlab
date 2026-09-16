@@ -123,16 +123,15 @@ export function QuoteForm({
           </div>
 
           <div className="field">
-            <label className="field-label" htmlFor={`${baseId}-address`}>
-              Street address / ZIP
+            <label className="field-label" htmlFor={`${baseId}-message`}>
+              Message
             </label>
-            <input
-              id={`${baseId}-address`}
-              name="address"
-              type="text"
-              autoComplete="street-address"
-              placeholder={`e.g. ${company.city}, ${company.state}`}
-              className="field-input"
+            <textarea
+              id={`${baseId}-message`}
+              name="message"
+              rows={3}
+              placeholder={`Tell us about your roof${company.city ? ` in ${company.city}` : ''} — leaks, storm damage, replacement…`}
+              className="field-textarea"
             />
           </div>
 

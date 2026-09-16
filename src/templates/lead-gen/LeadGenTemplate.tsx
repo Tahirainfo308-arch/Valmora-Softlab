@@ -165,7 +165,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               <div className="relative overflow-hidden rounded-2xl shadow-card ring-1 ring-ink-950/5">
                 <img
                   src={hero.image ?? '/assets/hero-roof.svg'}
-                  alt={`${company.name} roof on a Houston home`}
+                  alt={`${company.name} roof on a home in ${company.city}`}
                   className="aspect-[4/3] w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950/55 via-transparent to-transparent" />
@@ -174,7 +174,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                     {hero.perks[0]}
                   </span>
                 )}
-                <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-card border border-roof-100 bg-white p-3 pr-5 shadow-card">
+                <div className="absolute left-4 top-4 flex items-center gap-3 rounded-card border border-roof-100 bg-white p-3 pr-5 shadow-card">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-50 text-brand-700">
                     <GoogleMark size={16} />
                   </span>
@@ -253,7 +253,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
             <SectionHeading
               eyebrow={`Why ${company.city} homeowners choose us`}
               title="The Roofing Company Neighbors Recommend"
-              description="Four reasons thousands of Houston-area families hand us their keys and trust us with their most expensive repair."
+              description={`Four reasons thousands of ${company.city}-area families hand us their keys and trust us with their most expensive repair.`}
             />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {trust.badges.map((badge) => (
@@ -281,7 +281,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
             <SectionHeading
               eyebrow="Our work"
               title="Recent Roofing Projects"
-              description="Real roofs, real homes, real results across the Greater Houston area."
+              description={`Real roofs, real homes, real results across the Greater ${company.city} area.`}
             />
             <div className="grid gap-6 md:grid-cols-3">
               {projects.map((project) => (
@@ -297,7 +297,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
             <SectionHeading
               eyebrow="Customer stories"
               title={`Hear It From ${company.city} Homeowners`}
-              description="Real reviews from homeowners across the Houston metro — no cherry-picking, no scripts."
+              description={`Real reviews from homeowners across the ${company.city} metro — no cherry-picking, no scripts.`}
             />
             <div className="mx-auto mb-10 flex max-w-xl flex-wrap items-center justify-center gap-4 rounded-card border border-roof-200 bg-white px-6 py-5 shadow-card">
               <span className="font-display text-5xl font-bold text-ink-950">
@@ -341,7 +341,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                     <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-ink-900">Licensed &amp; Bonded</p>
-                      <p className="text-sm text-ink-600">Texas license #{trust.license_number}</p>
+                      <p className="text-sm text-ink-600">{company.state} license #{trust.license_number}</p>
                     </div>
                   </li>
                 )}
@@ -449,7 +449,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
       {/* ---------- Mobile sticky action bar ---------- */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-roof-200 bg-white/95 p-3 backdrop-blur lg:hidden">
         <div className="grid grid-cols-2 gap-2">
-          <PhoneCTA phone={company.phone} size="md" full />
+          <PhoneCTA phone={company.phone} label="Call Now" size="md" full />
           <Button href="#quote" variant="primary" size="md" full>
             {hero.primary_cta}
           </Button>

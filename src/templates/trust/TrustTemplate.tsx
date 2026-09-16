@@ -19,12 +19,14 @@ import { PhoneCTA } from '../../components/ui/PhoneCTA'
 import { TrustBadge } from '../../components/ui/TrustBadge'
 import { RatingStars } from '../../components/ui/RatingStars'
 import { SectionHeading } from '../../components/ui/SectionHeading'
+import { ServiceCard } from '../../components/ui/ServiceCard'
 import { TestimonialCard } from '../../components/ui/TestimonialCard'
 import { ProjectCard } from '../../components/ui/ProjectCard'
 import { toTelHref } from '../../lib/utils'
 
 const navLinks: NavLink[] = [
   { label: 'Why Us', href: '#why' },
+  { label: 'Services', href: '#services' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Our Work', href: '#projects' },
   { label: 'Contact', href: '#contact' },
@@ -35,6 +37,7 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
     company,
     hero,
     ratings,
+    services,
     testimonials,
     projects,
     trust,
@@ -154,13 +157,29 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
           </Container>
         </section>
 
+        {/* ---------- Services ---------- */}
+        <section id="services" className="section section-alt scroll-mt-24">
+          <Container>
+            <SectionHeading
+              eyebrow="What we handle"
+              title="Certified Work, Every Roof Type"
+              description={`From architectural shingles to standing-seam metal, one factory-trained crew handles it all across ${company.city_state}.`}
+            />
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {services.map((service) => (
+                <ServiceCard key={service.id} service={service} />
+              ))}
+            </div>
+          </Container>
+        </section>
+
         {/* ---------- Testimonials / reviews ---------- */}
         <section id="reviews" className="section section-alt scroll-mt-24">
           <Container>
             <SectionHeading
               eyebrow="Customer stories"
               title="Don't Take Our Word for It"
-              description="Real feedback from homeowners across the Houston metro."
+              description={`Real feedback from homeowners across the ${company.city} metro.`}
             />
             <div className="mx-auto mb-10 flex max-w-xl flex-wrap items-center justify-center gap-4 rounded-card border border-roof-200 bg-white px-6 py-5 shadow-card">
               <span className="font-display text-5xl font-bold text-ink-950">
@@ -239,7 +258,7 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
                     <div>
                       <p className="font-semibold text-ink-900">Licensed &amp; Bonded</p>
                       <p className="text-sm text-ink-600">
-                        Texas license #{trust.license_number}
+                        {company.state} license #{trust.license_number}
                       </p>
                     </div>
                   </li>
@@ -389,7 +408,7 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
         dark={false}
         licenseLine={
           trust.licensed && trust.license_number
-            ? `Licensed & insured · TX License #${trust.license_number}`
+            ? `Licensed & insured · ${company.state} License #${trust.license_number}`
             : undefined
         }
       />
