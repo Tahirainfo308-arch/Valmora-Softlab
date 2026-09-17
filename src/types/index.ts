@@ -179,6 +179,16 @@ export interface QuoteFormCopy {
   trust_note?: string
 }
 
+/**
+ * Configurable section intro copy. Values may contain {{name}},
+ * {{city}}, {{state}}, {{city_state}} tokens that are interpolated at render.
+ */
+export interface SectionsCopy {
+  services_eyebrow?: string
+  services_title?: string
+  services_subtitle?: string
+}
+
 /** External profiles, keyed by platform. */
 export interface SocialChannels {
   facebook?: string
@@ -226,4 +236,6 @@ export interface CompanyConfig {
   cta?: CtaLabels
   /** Quote-form title, subtitle, button, trust-note overrides. */
   quote_form?: QuoteFormCopy
+  /** Section intro copy (supports {{token}} interpolation). */
+  sections?: SectionsCopy
 }

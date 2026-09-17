@@ -16,10 +16,10 @@
   },
   "hero": {
     "eyebrow": "Houston's Storm-Trusted Roofing Contractor",
-    "headline": "Your Roof. Our Priority.",
-    "subheadline": "Factory-certified installation, free inspections, honest pricing. We handle everything from storm damage to full roof replacement — across Greater Houston.",
+    "headline": "Roofing You Can Count On in {{city_state}}",
+    "subheadline": "Factory-certified installation, free estimates, and honest pricing — from storm damage to full roof replacement across Greater Houston.",
     "image": "/assets/hero-roof.svg",
-    "primary_cta": "Get My Free Inspection",
+    "primary_cta": "Get My Free Estimate",
     "secondary_cta": "Call Now",
     "perks": ["Free Inspections", "0% Financing Available", "Insurance Claim Help"]
   },
@@ -260,5 +260,10 @@
     "subtitle": "Tell us a little about your project and our team will get back to you.",
     "button_label": "Get My Free Estimate",
     "trust_note": "No obligation • Free estimate • Fast response"
+  },
+  "sections": {
+    "services_eyebrow": "What we do",
+    "services_title": "Roofing Services Built Around Your Home",
+    "services_subtitle": "From storm damage to full replacements, one crew handles it all across {{city_state}}."
   }
 }

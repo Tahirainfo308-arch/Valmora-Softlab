@@ -1,6 +1,7 @@
 import {
   Award,
   ArrowRight,
+  BadgeCheck,
   CircleCheck,
   Clock,
   Mail,
@@ -19,10 +20,10 @@ import { TrustBadge } from '../../components/ui/TrustBadge'
 import { QuoteForm } from '../../components/ui/QuoteForm'
 import { RatingStars } from '../../components/ui/RatingStars'
 import { SectionHeading } from '../../components/ui/SectionHeading'
-import { ServiceCard } from '../../components/ui/ServiceCard'
+import { ServiceCardPremium } from '../../components/ui/ServiceCardPremium'
 import { ProjectCard } from '../../components/ui/ProjectCard'
 import { TestimonialCard } from '../../components/ui/TestimonialCard'
-import { toTelHref } from '../../lib/utils'
+import { toTelHref, fillTokens } from '../../lib/utils'
 
 const navLinks: NavLink[] = [
   { label: 'Services', href: '#services' },
@@ -60,9 +61,13 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
     financing,
     cta,
     quote_form,
+    sections,
   } = config
 
   const showWarranty = trust.warranty
+
+  // Interpolate {{city}} / {{state}} / {{city_state}} / {{name}} tokens in config copy.
+  const txt = (value?: string) => (value ? fillTokens(value, company) : undefined)
 
   return (
     <div className="bg-roof-50 pb-24 lg:pb-0" id="top">
@@ -116,11 +121,16 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.07] mix-blend-multiply"
             />
           )}
+          {/* Soft background depth — no hard gradients */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand-100/80 blur-3xl" />
+            <div className="absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-roof-200/80 blur-3xl" />
+          </div>
           <Container className="relative grid items-center gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.22fr)] lg:gap-16 lg:py-6">
             <div>
-              {hero.eyebrow && <p className="eyebrow">{hero.eyebrow}</p>}
-              <h1 className="heading-hero">{hero.headline}</h1>
-              <p className="lead mt-3">{hero.subheadline}</p>
+              {hero.eyebrow && <p className="eyebrow">{txt(hero.eyebrow)}</p>}
+              <h1 className="heading-1">{txt(hero.headline)}</h1>
+              <p className="lead mt-3">{txt(hero.subheadline)}</p>
 
               <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
                 <span className="rating-chip">
@@ -131,24 +141,58 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                     · {ratings.review_count} Google reviews
                   </span>
                 </span>
+                {ratings.review_url && (
+                  <a
+                    href={ratings.review_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-inline text-sm"
+                  >
+                    Read reviews
+                  </a>
+                )}
               </div>
 
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <Button href="#quote" variant="primary" size="lg" full>
-                  {hero.primary_cta}
+                  {txt(hero.primary_cta)}
                   <ArrowRight size={18} aria-hidden="true" />
                 </Button>
                 <PhoneCTA
                   phone={company.phone}
-                  label={hero.secondary_cta}
+                  label={txt(hero.secondary_cta)}
                   variant="outline"
                   size="lg"
                   full
                 />
               </div>
 
+              {/* Trust points */}
+              {(trust.licensed || trust.insured || trust.free_estimates === true || trust.warranty) && (
+                <ul className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-1.5">
+                  {trust.licensed && trust.insured && (
+                    <li className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-ink-700">
+                      <ShieldCheck size={15} className="text-brand-700" aria-hidden="true" />
+                      Licensed &amp; Insured
+                    </li>
+                  )}
+                  {trust.free_estimates === true && (
+                    <li className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-ink-700">
+                      <BadgeCheck size={15} className="text-brand-700" aria-hidden="true" />
+                      Free Estimates
+                    </li>
+                  )}
+                  {trust.warranty && (
+                    <li className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-ink-700">
+                      <Award size={15} className="text-brand-700" aria-hidden="true" />
+                      Warranty
+                    </li>
+                  )}
+                </ul>
+              )}
+
               {hero.perks && hero.perks.length > 0 && (
-                <ul className="mt-5 flex flex-wrap gap-2.5">
+                <ul className="mt-3 flex flex-wrap gap-2.5">
                   {hero.perks.map((perk) => (
                     <li key={perk} className="chip">
                       <ShieldCheck size={14} className="text-brand-700" aria-hidden="true" />
@@ -159,7 +203,19 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               )}
             </div>
 
-            <div id="quote" className="scroll-mt-24">
+            <div id="quote" className="relative scroll-mt-24">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-6 -right-4 h-40 w-40 rounded-full bg-brand-200/50 blur-2xl"
+              />
+              {trust.licensed && trust.insured && (
+                <div className="absolute -top-4 right-4 z-10 rounded-full border border-roof-200 bg-white px-3.5 py-1.5 shadow-card">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-ink-900">
+                    <ShieldCheck size={14} className="text-brand-700" aria-hidden="true" />
+                    Licensed &amp; Insured
+                  </span>
+                </div>
+              )}
               <QuoteForm
                 company={company}
                 emergency={emergency}
@@ -211,13 +267,13 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
         <section id="services" className="section scroll-mt-24">
           <Container>
             <SectionHeading
-              eyebrow="What we do"
-              title="Full-Service Roofing for Homes & Businesses"
-              description={`One call handles it all — from ${trust.free_estimates === true ? 'free ' : ''}inspections and storm response to complete replacements and gutters, across ${company.city_state}.`}
+              eyebrow={txt(sections?.services_eyebrow) ?? 'What we do'}
+              title={txt(sections?.services_title) ?? 'Roofing Services Built Around Your Home'}
+              description={txt(sections?.services_subtitle)}
             />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service) => (
-                <ServiceCard key={service.id} service={service} />
+              {services.map((service, index) => (
+                <ServiceCardPremium key={service.id} service={service} index={index} />
               ))}
             </div>
           </Container>
@@ -228,15 +284,17 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
           <Container>
             <div className="flex flex-col items-center justify-between gap-5 rounded-2xl border border-roof-200 bg-white px-6 py-7 text-center shadow-soft sm:flex-row sm:gap-8 sm:text-left md:px-10">
               <div>
-                <h2 className="heading-3 text-xl">Not sure what your roof needs?</h2>
+                <h2 className="heading-3 text-xl">Not sure what you need?</h2>
                 <p className="mt-1 text-sm text-ink-600">
-                  {trust.free_estimates === true ? 'Free, ' : ''}itemized estimates from{' '}
+                  {trust.free_estimates === true ? 'Free, ' : ''}honest{' '}
                   {trust.licensed ? 'licensed ' : ''}
-                  {company.city} roofers{company.response_time ? ` — usually ${company.response_time}` : ''}.
+                  {company.city} roofers will walk your roof with you
+                  {company.response_time ? ` — usually ${company.response_time}` : ''}.
                 </p>
               </div>
               <Button href="#quote" variant="primary" size="lg" full>
-                {hero.primary_cta}
+                {trust.free_estimates === true ? 'Get a Free Inspection' : 'Get an Inspection'}
+                <ArrowRight size={18} aria-hidden="true" />
               </Button>
             </div>
           </Container>
