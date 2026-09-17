@@ -22,25 +22,38 @@ export function ServiceCardPremium({
   return (
     <article
       className={cn(
-        'group relative flex h-full flex-col overflow-hidden rounded-card border border-roof-200 bg-white shadow-card transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-brand-600 hover:shadow-card-hover',
+        'group relative flex h-full min-h-[440px] flex-col overflow-hidden rounded-card border border-roof-200 bg-white shadow-card transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-brand-600 hover:shadow-card-hover',
         className,
       )}
     >
-      {/* Icon band with soft shape + badge */}
-      <div className="relative flex h-44 items-center justify-center overflow-hidden bg-roof-100">
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-brand-100 blur-2xl transition-opacity duration-200 opacity-80 group-hover:opacity-100"
-        />
-        <span className="pointer-events-none absolute -bottom-16 -left-8 h-32 w-32 rounded-full bg-roof-200/70 blur-2xl" aria-hidden="true" />
-        <span className="relative flex h-16 w-16 items-center justify-center rounded-xl bg-brand-700 text-white shadow-cta transition-transform duration-200 group-hover:scale-105">
-          {createElement(Icon, { size: 28, 'aria-hidden': true })}
-        </span>
+      {/* Photo band — the primary visual for each service */}
+      <div className="relative aspect-[16/9] overflow-hidden bg-roof-100">
+        {service.image ? (
+          <>
+            <img
+              src={service.image}
+              alt={service.alt ?? service.name}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/55 via-ink-950/5 to-transparent"
+            />
+          </>
+        ) : (
+          <span className="flex h-full w-full items-center justify-center">
+            <span className="flex h-16 w-16 items-center justify-center rounded-xl bg-brand-700 text-white shadow-cta transition-transform duration-200 group-hover:scale-105">
+              {createElement(Icon, { size: 28, 'aria-hidden': true })}
+            </span>
+          </span>
+        )}
         {service.badge && <span className="card-tag">{service.badge}</span>}
         {numbered && (
           <span
             aria-hidden="true"
-            className="absolute bottom-3 left-4 font-display text-3xl font-extrabold text-roof-300"
+            className="absolute bottom-3 left-4 font-display text-3xl font-extrabold text-white/85"
           >
             {String(index + 1).padStart(2, '0')}
           </span>

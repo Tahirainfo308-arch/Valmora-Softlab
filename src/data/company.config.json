@@ -36,17 +36,8 @@
       "description": "Complete tear-off and replacement with architectural shingles, metal, or tile — backed by manufacturer warranties.",
       "icon": "Roof",
       "image": "/assets/service-replacement.jpg",
-      "alt": "Crew installing architectural shingles on a residential roof",
+      "alt": "Roofing crew installing architectural shingles on a residential roof",
       "badge": "Most Popular"
-    },
-    {
-      "id": "storm-damage",
-      "name": "Storm Damage Repair",
-      "description": "Rapid-response hail and wind damage repairs. We handle inspections, documentation, and insurance claims for you.",
-      "icon": "CloudRainWind",
-      "image": "/assets/service-storm.jpg",
-      "alt": "Dark storm clouds gathering over neighborhood houses",
-      "badge": "24/7 Response"
     },
     {
       "id": "roof-repair",
@@ -54,7 +45,24 @@
       "description": "Leak detection, flashing, and shingle repair that stops small issues before they become major costs.",
       "icon": "Wrench",
       "image": "/assets/service-repair.jpg",
-      "alt": "Roofer repairing shingles on a residential roof"
+      "alt": "Roofers repairing worn shingles on a residential roof"
+    },
+    {
+      "id": "storm-damage",
+      "name": "Storm Damage Repair",
+      "description": "Rapid-response hail and wind damage repairs. We handle inspections, documentation, and insurance claims for you.",
+      "icon": "CloudRainWind",
+      "image": "/assets/service-storm.jpg",
+      "alt": "Storm clouds gathering over a neighborhood before a hail storm",
+      "badge": "24/7 Response"
+    },
+    {
+      "id": "emergency-roofing",
+      "name": "Emergency Roofing",
+      "description": "Fast-response tarping and temporary repairs that secure your home after a storm until the permanent fix begins.",
+      "icon": "CloudLightning",
+      "image": "/assets/service-emergency.jpg",
+      "alt": "Crew recovering an open storm-damaged roof on a brick home"
     },
     {
       "id": "roof-inspection",
@@ -71,14 +79,6 @@
       "icon": "Droplets",
       "image": "/assets/service-gutters.jpg",
       "alt": "Technician installing a seamless gutter at the roofline"
-    },
-    {
-      "id": "ventilation",
-      "name": "Attic Ventilation",
-      "description": "Balanced ridge and soffit ventilation that lowers attic heat and extends the life of your roof.",
-      "icon": "Fan",
-      "image": "/assets/service-ventilation.jpg",
-      "alt": "Attic ventilation ridge vent along a roofline"
     }
   ],
   "reviews": [
