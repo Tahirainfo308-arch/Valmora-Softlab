@@ -119,7 +119,8 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
               <div className="overflow-hidden rounded-2xl shadow-card">
                 <img
                   src={hero.image ?? projects[0]?.image ?? '/assets/hero-roof.svg'}
-                  alt={`${company.name} roofing project`}
+                  alt={hero.alt ?? projects[0]?.alt ?? `${company.name} roofing project`}
+                  decoding="async"
                   className="aspect-[4/3] w-full object-cover"
                 />
               </div>

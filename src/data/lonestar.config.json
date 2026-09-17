@@ -18,7 +18,8 @@
     "eyebrow": "Dallas-Fort Worth's Roofing Specialists",
     "headline": "Roofed Right, For the Long Haul",
     "subheadline": "Free roof audits, fair pricing, and certified installation crews. From storm damage to full replacements, we protect what matters most — across the entire DFW metroplex.",
-    "image": "/assets/hero-roof.svg",
+    "image": "/assets/hero-roof.jpg",
+    "alt": "Roofer crews installing a new architectural shingle roof",
     "primary_cta": "Get My Free Roof Audit",
     "secondary_cta": "Call Us Now",
     "perks": ["Free Roof Audit", "0% Financing Available", "Insurance Claim Support"]
@@ -34,7 +35,8 @@
       "name": "Roof Replacement",
       "description": "Complete tear-off and re-roof with CertainTeed architectural shingles, metal, or tile — fully backed by manufacturer warranties.",
       "icon": "Roof",
-      "image": "/assets/service-placeholder.svg",
+      "image": "/assets/service-replacement.jpg",
+      "alt": "Crew installing CertainTeed architectural shingles",
       "badge": "Best Seller"
     },
     {
@@ -42,7 +44,8 @@
       "name": "Wind & Hail Repair",
       "description": "Fast DFW storm response. We photograph the damage, file the claim, and negotiate with your adjuster — one less thing on your plate.",
       "icon": "CloudRainWind",
-      "image": "/assets/service-placeholder.svg",
+      "image": "/assets/service-storm.jpg",
+      "alt": "Home exterior after a DFW hail storm",
       "badge": "Rapid Response"
     },
     {
@@ -50,28 +53,32 @@
       "name": "Leak Detection & Repair",
       "description": "Pinpoint leaks with thermal imaging and moisture scans before they ruin ceilings, insulation, and everything below.",
       "icon": "Search",
-      "image": "/assets/service-placeholder.svg"
+      "image": "/assets/service-repair.jpg",
+      "alt": "Roofer repairing shingles during a leak repair"
     },
     {
       "id": "metal-roofing",
       "name": "Metal Roofing",
       "description": "Standing-seam and screw-down systems rated for 60+ years — perfect for Dallas hail zones and homeowners who hate maintenance.",
       "icon": "Droplets",
-      "image": "/assets/service-placeholder.svg"
+      "image": "/projects/woodlands-metal.jpg",
+      "alt": "Standing-seam metal roof installation"
     },
     {
       "id": "gutters",
       "name": "Seamless Gutters",
       "description": "Custom-formed gutters and leaf guards sized to handle DFW cloudbursts without overflowing.",
       "icon": "Fan",
-      "image": "/assets/service-placeholder.svg"
+      "image": "/assets/service-gutters.jpg",
+      "alt": "Seamless gutters and leaf guards along a roofline"
     },
     {
       "id": "ventilation",
       "name": "Attic & Ventilation",
       "description": "Balanced intake and exhaust ventilation that cuts attic heat, protects shingles, and trims cooling bills.",
       "icon": "Wrench",
-      "image": "/assets/service-placeholder.svg"
+      "image": "/assets/service-ventilation.jpg",
+      "alt": "Attic ventilation work at a roofline"
     }
   ],
   "reviews": [
@@ -134,9 +141,10 @@
       "id": "ls-p1",
       "title": "CertainTeed Landmark Replacement",
       "location": "Plano, TX",
-      "before_image": "/assets/roof-before.svg",
-      "after_image": "/assets/roof-after.svg",
-      "image": "/projects/plano-roof.svg",
+      "before_image": "/assets/roof-before.jpg",
+      "after_image": "/assets/roof-after.jpg",
+      "image": "/projects/plano-roof.jpg",
+      "alt": "CertainTeed Landmark shingle roof on a Plano home",
       "description": "Full replacement with CertainTeed Landmark Pro in driftwood. New ridge vent, snow-country underlayment, and drip edge throughout.",
       "type": "Roof Replacement",
       "year": "2025",
@@ -146,9 +154,10 @@
       "id": "ls-p2",
       "title": "Hail Recovery — Frisco Estate",
       "location": "Frisco, TX",
-      "before_image": "/assets/roof-before.svg",
-      "after_image": "/assets/roof-after.svg",
-      "image": "/projects/frisco-hail.svg",
+      "before_image": "/assets/roof-before.jpg",
+      "after_image": "/assets/roof-after.jpg",
+      "image": "/projects/frisco-hail.jpg",
+      "alt": "Class 4 impact-resistant shingle roof on a Frisco estate",
       "description": "Class 4 impact-resistant shingles over a full synthetic underlayment after a spring hailstorm pounded the neighborhood.",
       "type": "Storm Damage Repair",
       "year": "2025",
@@ -158,9 +167,10 @@
       "id": "ls-p3",
       "title": "Standing-Seam Install",
       "location": "Fort Worth, TX",
-      "before_image": "/assets/roof-before.svg",
-      "after_image": "/assets/roof-after.svg",
-      "image": "/projects/ftworth-metal.svg",
+      "before_image": "/assets/roof-before.jpg",
+      "after_image": "/assets/roof-after.jpg",
+      "image": "/projects/ftworth-metal.jpg",
+      "alt": "Standing-seam metal roof on a Fort Worth home",
       "description": "24-gauge standing-seam metal roof with concealed fasteners and a 50-year paint warranty.",
       "type": "Metal Roof Installation",
       "year": "2024",

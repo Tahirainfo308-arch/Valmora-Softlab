@@ -532,7 +532,7 @@
 
   /* Top navigation link (header/footer). */
   .nav-link {
-    @apply relative text-sm font-semibold text-ink-700;
+    @apply relative whitespace-nowrap text-sm font-semibold text-ink-700;
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
     background-size: 0% 2px;

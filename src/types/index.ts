@@ -37,6 +37,8 @@ export interface HeroContent {
   headline: string
   subheadline: string
   image?: string
+  /** Accessible description of the hero image. */
+  alt?: string
   /** Primary CTA label, usually "Get a free quote/inspection". */
   primary_cta: string
   /** Secondary CTA label, usually "Call us now". */
@@ -62,6 +64,8 @@ export interface Service {
   /** Lucide icon name mapped by the UI (see lib/iconMap). */
   icon: string
   image?: string
+  /** Accessible description of the service image. */
+  alt?: string
   /** Optional emphasis badge, e.g. "Most Popular". */
   badge?: string
 }
@@ -95,6 +99,8 @@ export interface Project {
   before_image?: string
   after_image?: string
   image: string
+  /** Accessible description of the primary project image. */
+  alt?: string
   description?: string
   /** e.g. "Roof Replacement", "Storm Damage Repair". */
   type?: string

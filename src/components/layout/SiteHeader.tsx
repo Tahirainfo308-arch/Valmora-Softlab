@@ -42,10 +42,10 @@ export function SiteHeader({
           : 'border-roof-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85',
       )}
     >
-      <Container className="flex items-center justify-between gap-4 py-3.5">
+      <Container className="flex items-center justify-between gap-3 py-3.5 xl:gap-4">
         <Logo company={company} dark={dark} />
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-5 whitespace-nowrap xl:flex xl:gap-6" aria-label="Primary">
           {links.map((link) => (
             <a
               key={link.href}
@@ -63,17 +63,17 @@ export function SiteHeader({
         <div className="flex items-center gap-2">
           <a
             href={toTelHref(company.phone)}
-            className={cn('nav-link hidden items-center gap-1.5 xl:inline-flex', dark && 'text-ink-200 hover:text-brand-400')}
+            className={cn('nav-link hidden shrink-0 items-center gap-1.5 xl:inline-flex', dark && 'text-ink-200 hover:text-brand-400')}
           >
             <PhoneCall size={15} aria-hidden="true" />
             Call {company.city_state}
           </a>
-          <PhoneCTA phone={company.phone} size="sm" className="hidden md:inline-flex" />
+          <PhoneCTA phone={company.phone} size="sm" className="hidden shrink-0 md:inline-flex" />
           {primaryAction && (
             <Button
               href={primaryAction.href}
               size="sm"
-              className="hidden lg:inline-flex"
+              className="hidden shrink-0 whitespace-nowrap lg:inline-flex"
             >
               {primaryAction.label}
             </Button>
@@ -81,7 +81,7 @@ export function SiteHeader({
           <button
             type="button"
             className={cn(
-              'inline-flex h-10 w-10 items-center justify-center rounded-md border lg:hidden',
+              'inline-flex h-10 w-10 items-center justify-center rounded-md border xl:hidden',
               dark
                 ? 'border-ink-700 bg-ink-900 text-white'
                 : 'border-roof-200 bg-white text-ink-900',
@@ -101,7 +101,7 @@ export function SiteHeader({
           id="site-navigation"
           aria-label="Mobile"
           className={cn(
-            'border-t lg:hidden',
+            'border-t xl:hidden',
             dark ? 'border-ink-800 bg-ink-950' : 'border-roof-200 bg-white',
           )}
         >

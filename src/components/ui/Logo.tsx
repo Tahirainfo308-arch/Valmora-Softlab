@@ -11,7 +11,7 @@ export function Logo({ company, dark = false, className }: LogoProps) {
   return (
     <a
       href="#top"
-      className={cn('flex items-center gap-2.5', className)}
+      className={cn('flex shrink-0 items-center gap-2.5', className)}
       aria-label={`${company.name} — home`}
     >
       {company.logo_url ? (
@@ -27,7 +27,7 @@ export function Logo({ company, dark = false, className }: LogoProps) {
       )}
       <span
         className={cn(
-          'font-display text-xl font-bold tracking-tight',
+          'whitespace-nowrap font-display text-xl font-bold tracking-tight',
           dark ? 'text-white' : 'text-ink-950',
         )}
       >

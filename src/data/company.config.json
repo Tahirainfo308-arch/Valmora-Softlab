@@ -18,7 +18,8 @@
     "eyebrow": "Houston's Storm-Trusted Roofing Contractor",
     "headline": "Roofing You Can Count On in {{city_state}}",
     "subheadline": "Factory-certified installation, free estimates, and honest pricing — from storm damage to full roof replacement across Greater Houston.",
-    "image": "/assets/hero-roof.svg",
+    "image": "/assets/hero-roof.jpg",
+    "alt": "New architectural shingle roof on a home under a blue sky",
     "primary_cta": "Get My Free Estimate",
     "secondary_cta": "Call Now",
     "perks": ["Free Inspections", "0% Financing Available", "Insurance Claim Help"]
@@ -34,7 +35,8 @@
       "name": "Roof Replacement",
       "description": "Complete tear-off and replacement with architectural shingles, metal, or tile — backed by manufacturer warranties.",
       "icon": "Roof",
-      "image": "/assets/service-placeholder.svg",
+      "image": "/assets/service-replacement.jpg",
+      "alt": "Crew installing architectural shingles on a residential roof",
       "badge": "Most Popular"
     },
     {
@@ -42,7 +44,8 @@
       "name": "Storm Damage Repair",
       "description": "Rapid-response hail and wind damage repairs. We handle inspections, documentation, and insurance claims for you.",
       "icon": "CloudRainWind",
-      "image": "/assets/service-placeholder.svg",
+      "image": "/assets/service-storm.jpg",
+      "alt": "Home exterior after a hail and wind storm",
       "badge": "24/7 Response"
     },
     {
@@ -50,28 +53,32 @@
       "name": "Roof Repair",
       "description": "Leak detection, flashing, and shingle repair that stops small issues before they become major costs.",
       "icon": "Wrench",
-      "image": "/assets/service-placeholder.svg"
+      "image": "/assets/service-repair.jpg",
+      "alt": "Roofer repairing shingles on a residential roof"
     },
     {
       "id": "roof-inspection",
       "name": "Roof Inspection",
       "description": "Detailed photo-documented inspections and honest condition reports — free for homeowners and commercial owners.",
       "icon": "Search",
-      "image": "/assets/service-placeholder.svg"
+      "image": "/assets/service-inspection.jpg",
+      "alt": "Roof inspector examining shingles on a sloped roof"
     },
     {
       "id": "gutters",
       "name": "Gutters & Downspouts",
       "description": "Seamless gutter installation and leaf guards engineered to keep water moving away from your foundation.",
       "icon": "Droplets",
-      "image": "/assets/service-placeholder.svg"
+      "image": "/assets/service-gutters.jpg",
+      "alt": "Seamless gutters running along the roofline of a home"
     },
     {
       "id": "ventilation",
       "name": "Attic Ventilation",
       "description": "Balanced ridge and soffit ventilation that lowers attic heat and extends the life of your roof.",
       "icon": "Fan",
-      "image": "/assets/service-placeholder.svg"
+      "image": "/assets/service-ventilation.jpg",
+      "alt": "Attic ventilation ridge vent along a roofline"
     }
   ],
   "reviews": [
@@ -134,9 +141,10 @@
       "id": "p1",
       "title": "Timberline HDZ Replacement",
       "location": "Katy, TX",
-      "before_image": "/assets/roof-before.svg",
-      "after_image": "/assets/roof-after.svg",
-      "image": "/projects/katy-roof.svg",
+      "before_image": "/assets/roof-before.jpg",
+      "after_image": "/assets/roof-after.jpg",
+      "image": "/projects/katy-roof.jpg",
+      "alt": "New Timberline HDZ shingle roof on a home in Katy",
       "description": "Full tear-off and replacement with GAF Timberline HDZ in weathered wood. New ridge vent, pipe boots, and standing-seam accents.",
       "type": "Roof Replacement",
       "year": "2025",
@@ -146,9 +154,10 @@
       "id": "p2",
       "title": "Hail Storm Recovery",
       "location": "Sugar Land, TX",
-      "before_image": "/assets/roof-before.svg",
-      "after_image": "/assets/roof-after.svg",
-      "image": "/projects/sugarland-roof.svg",
+      "before_image": "/assets/roof-before.jpg",
+      "after_image": "/assets/roof-after.jpg",
+      "image": "/projects/sugarland-roof.jpg",
+      "alt": "Architectural shingle roof on a home in Sugar Land after hail recovery",
       "description": "Insurance-claim full replacement after a spring hailstorm — Class 4 impact-resistant shingles over synthetic underlayment.",
       "type": "Storm Damage Repair",
       "year": "2025",
@@ -158,9 +167,10 @@
       "id": "p3",
       "title": "Standing-Seam Metal Roof",
       "location": "The Woodlands, TX",
-      "before_image": "/assets/roof-before.svg",
-      "after_image": "/assets/roof-after.svg",
-      "image": "/projects/woodlands-metal.svg",
+      "before_image": "/assets/roof-before.jpg",
+      "after_image": "/assets/roof-after.jpg",
+      "image": "/projects/woodlands-metal.jpg",
+      "alt": "Standing-seam metal roof on a home in The Woodlands",
       "description": "Custom 24-gauge standing-seam metal roof with ice-and-water shield and a lifetime finish warranty.",
       "type": "Metal Roof Installation",
       "year": "2024",

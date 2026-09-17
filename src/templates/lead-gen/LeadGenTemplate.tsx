@@ -119,7 +119,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               src={hero.image}
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.07] mix-blend-multiply"
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.15] mix-blend-multiply"
             />
           )}
           {/* Soft background depth — no hard gradients */}

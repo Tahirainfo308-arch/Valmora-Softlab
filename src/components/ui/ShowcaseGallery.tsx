@@ -38,13 +38,14 @@ function ProjectFeature({ project, className }: { project: Project; className?: 
         <BeforeAfter
           before={project.before_image!}
           after={project.after_image!}
-          alt={project.title}
+          alt={project.alt ?? project.title}
         />
       ) : (
         <img
           src={project.image}
-          alt={project.title}
+          alt={project.alt ?? project.title}
           loading="lazy"
+          decoding="async"
           className="aspect-[4/3] h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       )}
@@ -85,8 +86,9 @@ function ProjectTall({ project, className }: { project: Project; className?: str
     >
       <img
         src={project.image}
-        alt={project.title}
+        alt={project.alt ?? project.title}
         loading="lazy"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
       <div
@@ -120,7 +122,7 @@ function ProjectWide({ project, className }: { project: Project; className?: str
       <div className="relative min-h-[16rem] overflow-hidden">
         <img
           src={project.image}
-          alt={project.title}
+          alt={project.alt ?? project.title}
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />

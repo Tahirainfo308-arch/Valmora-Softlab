@@ -52,7 +52,8 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
               src={hero.image}
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25"
+              decoding="async"
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.18]"
             />
           )}
           <Container className="relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.1fr_0.9fr]">
@@ -160,9 +161,9 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
                   <div className="relative aspect-[16/9] overflow-hidden">
                     <img
                       src={service.image}
-                      alt=""
-                      aria-hidden="true"
+                      alt={service.alt ?? service.name}
                       loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/10 to-transparent" />
@@ -226,8 +227,9 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
                   <div className="overflow-hidden">
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={project.alt ?? project.title}
                       loading="lazy"
+                      decoding="async"
                       className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>

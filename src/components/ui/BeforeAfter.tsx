@@ -22,6 +22,8 @@ export function BeforeAfter({ before, after, alt }: BeforeAfterProps) {
         alt={`${alt} — after`}
         className="absolute inset-0 h-full w-full object-cover"
         draggable={false}
+        loading="lazy"
+        decoding="async"
       />
 
       <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
@@ -30,6 +32,7 @@ export function BeforeAfter({ before, after, alt }: BeforeAfterProps) {
           alt={`${alt} — before`}
           className="absolute inset-0 h-full object-cover"
           draggable={false}
+          decoding="async"
           style={{ width: `calc(100% / ${pos / 100})` }}
         />
       </div>
