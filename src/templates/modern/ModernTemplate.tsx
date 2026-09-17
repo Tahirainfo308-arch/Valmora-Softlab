@@ -47,15 +47,6 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
       <main>
         {/* ---------- Hero (dark, bold) ---------- */}
         <section className="relative overflow-hidden bg-ink-950 text-white">
-          {hero.image && (
-            <img
-              src={hero.image}
-              alt=""
-              aria-hidden="true"
-              decoding="async"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.18]"
-            />
-          )}
           <Container className="relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               {hero.eyebrow && (

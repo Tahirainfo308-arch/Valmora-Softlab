@@ -114,14 +114,6 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
       <main>
         {/* ---------- Hero: 45% content / 55% quote form — full form above the fold ---------- */}
         <section className="relative overflow-hidden">
-          {hero.image && (
-            <img
-              src={hero.image}
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.15] mix-blend-multiply"
-            />
-          )}
           {/* Soft background depth — no hard gradients */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand-100/80 blur-3xl" />

@@ -19,7 +19,7 @@
     "headline": "Roofing You Can Count On in {{city_state}}",
     "subheadline": "Factory-certified installation, free estimates, and honest pricing — from storm damage to full roof replacement across Greater Houston.",
     "image": "/assets/hero-roof.jpg",
-    "alt": "New architectural shingle roof on a home under a blue sky",
+    "alt": "Premium home exterior with a new architectural shingle roof",
     "primary_cta": "Get My Free Estimate",
     "secondary_cta": "Call Now",
     "perks": ["Free Inspections", "0% Financing Available", "Insurance Claim Help"]
@@ -45,7 +45,7 @@
       "description": "Rapid-response hail and wind damage repairs. We handle inspections, documentation, and insurance claims for you.",
       "icon": "CloudRainWind",
       "image": "/assets/service-storm.jpg",
-      "alt": "Home exterior after a hail and wind storm",
+      "alt": "Dark storm clouds gathering over neighborhood houses",
       "badge": "24/7 Response"
     },
     {
@@ -70,7 +70,7 @@
       "description": "Seamless gutter installation and leaf guards engineered to keep water moving away from your foundation.",
       "icon": "Droplets",
       "image": "/assets/service-gutters.jpg",
-      "alt": "Seamless gutters running along the roofline of a home"
+      "alt": "Technician installing a seamless gutter at the roofline"
     },
     {
       "id": "ventilation",
@@ -144,7 +144,7 @@
       "before_image": "/assets/roof-before.jpg",
       "after_image": "/assets/roof-after.jpg",
       "image": "/projects/katy-roof.jpg",
-      "alt": "New Timberline HDZ shingle roof on a home in Katy",
+      "alt": "Red brick home with a new architectural shingle roof in Katy",
       "description": "Full tear-off and replacement with GAF Timberline HDZ in weathered wood. New ridge vent, pipe boots, and standing-seam accents.",
       "type": "Roof Replacement",
       "year": "2025",
@@ -157,7 +157,7 @@
       "before_image": "/assets/roof-before.jpg",
       "after_image": "/assets/roof-after.jpg",
       "image": "/projects/sugarland-roof.jpg",
-      "alt": "Architectural shingle roof on a home in Sugar Land after hail recovery",
+      "alt": "Modern luxury home in Sugar Land after a full roof replacement",
       "description": "Insurance-claim full replacement after a spring hailstorm — Class 4 impact-resistant shingles over synthetic underlayment.",
       "type": "Storm Damage Repair",
       "year": "2025",

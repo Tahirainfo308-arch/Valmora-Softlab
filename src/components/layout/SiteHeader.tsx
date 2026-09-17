@@ -65,7 +65,7 @@ export function SiteHeader({
             href={toTelHref(company.phone)}
             className={cn('nav-link hidden shrink-0 items-center gap-1.5 xl:inline-flex', dark && 'text-ink-200 hover:text-brand-400')}
           >
-            <PhoneCall size={15} aria-hidden="true" />
+            <PhoneCall size={15} className={cn(dark ? 'text-brand-400' : 'text-brand-700')} aria-hidden="true" />
             Call {company.city_state}
           </a>
           <PhoneCTA phone={company.phone} size="sm" className="hidden shrink-0 md:inline-flex" />

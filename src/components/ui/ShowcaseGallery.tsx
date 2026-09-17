@@ -53,7 +53,7 @@ function ProjectFeature({ project, className }: { project: Project; className?: 
         <div className="min-w-0">
           {project.location && (
             <p className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-ink-400">
-              <MapPin size={13} aria-hidden="true" />
+              <MapPin size={13} className="text-brand-700" aria-hidden="true" />
               {project.location}
             </p>
           )}
@@ -65,7 +65,7 @@ function ProjectFeature({ project, className }: { project: Project; className?: 
         </div>
         <a
           href="#quote"
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-roof-200 text-ink-700 transition-colors hover:border-brand-700 hover:bg-brand-700 hover:text-white"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-roof-200 text-brand-700 transition-colors hover:border-brand-700 hover:bg-brand-700 hover:text-white"
           aria-label={`Request a project like ${project.title}`}
         >
           <ArrowUpRight
@@ -98,7 +98,7 @@ function ProjectTall({ project, className }: { project: Project; className?: str
       <div className="absolute inset-x-0 bottom-0 p-6">
         {project.location && (
           <p className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-white/70">
-            <MapPin size={13} aria-hidden="true" />
+            <MapPin size={13} className="text-brand-400" aria-hidden="true" />
             {project.location}
           </p>
         )}

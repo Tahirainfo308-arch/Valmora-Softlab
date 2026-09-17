@@ -66,7 +66,7 @@ export function ServiceCardPremium({
         </a>
         <a
           href="#quote"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-roof-200 text-ink-700 transition-colors duration-150 group-hover:border-brand-600 group-hover:bg-brand-700 group-hover:text-white"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-roof-200 text-brand-700 transition-colors duration-150 group-hover:border-brand-600 group-hover:bg-brand-700 group-hover:text-white"
           aria-label={`Request ${service.name}`}
         >
           <ArrowRight
