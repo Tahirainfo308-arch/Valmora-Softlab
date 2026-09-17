@@ -126,7 +126,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
             <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand-100/80 blur-3xl" />
             <div className="absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-roof-200/80 blur-3xl" />
           </div>
-          <Container className="relative grid items-center gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.22fr)] lg:gap-16 lg:py-6">
+          <Container className="relative grid items-center gap-8 py-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.22fr)] lg:gap-16 lg:py-6">
             <div>
               {hero.eyebrow && <p className="eyebrow">{txt(hero.eyebrow)}</p>}
               <h1 className="heading-1">{txt(hero.headline)}</h1>
@@ -192,7 +192,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               )}
 
               {hero.perks && hero.perks.length > 0 && (
-                <ul className="mt-3 flex flex-wrap gap-2.5">
+                <ul className="mt-3 hidden flex-wrap gap-2.5 sm:flex">
                   {hero.perks.map((perk) => (
                     <li key={perk} className="chip">
                       <ShieldCheck size={14} className="text-brand-700" aria-hidden="true" />
@@ -372,39 +372,67 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
           }}
         />
 
-        {/* ---------- Testimonials ---------- */}
-        <section id="reviews" className="section section-alt scroll-mt-24">
-          <Container>
-            <SectionHeading
-              eyebrow="Customer stories"
-              title={`Hear It From ${company.city} Homeowners`}
-              description={`Real reviews from homeowners across the ${company.city} metro — no cherry-picking, no scripts.`}
-            />
-            <div className="mx-auto mb-10 flex max-w-xl flex-wrap items-center justify-center gap-4 rounded-card border border-roof-200 bg-white px-6 py-5 shadow-card">
-              <span className="font-display text-5xl font-bold text-ink-950">
-                {ratings.google_rating}
-              </span>
-              <div>
-                <RatingStars rating={ratings.google_rating} size={18} />
-                <p className="mt-1 text-sm font-semibold text-ink-900">
-                  {ratings.review_count} verified Google reviews
+{/* ---------- Testimonials ---------- */}
+        <section id="reviews" className="section scroll-mt-24">
+          <Container className="lg:grid lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-5">
+              <div className="lg:sticky lg:top-28">
+                <p className="eyebrow">Customer stories</p>
+                <h2 className="heading-2">
+                  Hear It From {company.city} Homeowners
+                </h2>
+                <p className="lead mt-4">
+                  Real reviews from homeowners across the {company.city} metro —
+                  what they said, in their own words.
                 </p>
+
+                <div className="mt-8 flex items-center gap-5 rounded-card border border-roof-200 bg-white p-6 shadow-card">
+                  <span className="font-display text-6xl font-extrabold leading-none tracking-tight text-ink-950">
+                    {ratings.google_rating}
+                  </span>
+                  <div className="min-w-0">
+                    <RatingStars rating={ratings.google_rating} size={20} />
+                    <p className="mt-1.5 text-sm font-semibold text-ink-900">
+                      {ratings.review_count} Google reviews
+                    </p>
+                    {ratings.review_url && (
+                      <a
+                        href={ratings.review_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-inline mt-1 text-sm"
+                      >
+                        Read verified reviews
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
-              {ratings.review_url && (
-                <a
-                  href={ratings.review_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-inline text-sm"
-                >
-                  View on Google
-                </a>
-              )}
             </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {testimonials.map((testimonial) => (
-                <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+
+            <div className="mt-10 flex flex-col gap-5 lg:col-span-7 lg:mt-0">
+              {testimonials.map((testimonial, index) => (
+                <TestimonialCard
+                  key={testimonial.id}
+                  testimonial={testimonial}
+                  featured={index === 0}
+                />
               ))}
+            </div>
+          </Container>
+
+          {/* After-reviews CTA */}
+          <Container className="mt-14 lg:mt-16">
+            <div className="rounded-panel bg-brand-700 px-6 py-12 text-center text-white shadow-cta md:px-12">
+              <h2 className="heading-2 text-white">Ready to protect your home?</h2>
+              <p className="mx-auto mt-3 max-w-xl text-lg text-brand-50">
+                Tell us about your roof and we'll get back to you{' '}
+                {company.response_time ? `— usually ${company.response_time}` : 'as soon as we can'}.
+              </p>
+              <Button href="#quote" variant="on-dark" size="lg" className="mt-8">
+                {trust.free_estimates === true ? 'Get Your Free Estimate' : 'Get Your Estimate'}
+                <ArrowRight size={18} aria-hidden="true" />
+              </Button>
             </div>
           </Container>
         </section>

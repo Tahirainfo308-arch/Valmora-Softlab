@@ -5,12 +5,15 @@ import { RatingStars } from './RatingStars'
 interface TestimonialCardProps {
   testimonial: Testimonial
   dark?: boolean
+  /** Editorial emphasis — larger text, accent rule, more breathing room. */
+  featured?: boolean
   className?: string
 }
 
 export function TestimonialCard({
   testimonial,
   dark = false,
+  featured = false,
   className,
 }: TestimonialCardProps) {
   return (
@@ -20,17 +23,19 @@ export function TestimonialCard({
         dark
           ? 'border border-ink-800 bg-ink-900'
           : 'card shadow-card',
+        featured && 'border-t-4 border-t-brand-600 p-8',
         className,
       )}
     >
       <RatingStars rating={testimonial.rating} />
       <blockquote
         className={cn(
-          'mt-4 flex-1 text-base leading-relaxed',
+          'mt-4 flex-1 leading-relaxed',
+          featured ? 'text-lg' : 'text-base',
           dark ? 'text-ink-100' : 'text-ink-700',
         )}
       >
-        &ldquo;{testimonial.text}&rdquo;
+        {testimonial.text}
       </blockquote>
       <figcaption
         className={cn(
