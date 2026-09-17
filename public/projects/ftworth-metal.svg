@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="fw-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2cdae"/>
+      <stop offset="1" stop-color="#c3916e"/>
+    </linearGradient>
+    <linearGradient id="fw-metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c5450"/>
+      <stop offset="1" stop-color="#38312e"/>
+    </linearGradient>
+    <linearGradient id="fw-metal-l" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4b443f"/>
+      <stop offset="1" stop-color="#2b2623"/>
+    </linearGradient>
+    <linearGradient id="fw-stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b3a99b"/>
+      <stop offset="1" stop-color="#948a7b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#fw-sky)"/>
+  <circle cx="660" cy="420" r="170" fill="#ffedc9" opacity="0.35"/>
+  <circle cx="660" cy="420" r="70" fill="#ffdba6" opacity="0.5"/>
+
+  <path d="M0 600 L120 470 L240 600 Z" fill="#3a2f28" opacity="0.35"/>
+  <path d="M620 600 L760 440 L900 600 Z" fill="#3a2f28" opacity="0.3"/>
+
+  <path d="M130 330 L410 130 L690 330 Z" fill="url(#fw-metal)" stroke="#16130f" stroke-width="5"/>
+  <path d="M130 330 L410 130 L270 330 Z" fill="url(#fw-metal-l)" stroke="#16130f" stroke-width="3"/>
+  <path d="M690 330 L410 130 L550 330 Z" fill="#2f2a27" stroke="#16130f" stroke-width="3"/>
+  <g stroke="#16130f" stroke-width="1.8" opacity="0.5">
+    <path d="M410 130 L690 338"/>
+    <path d="M410 162 L690 344"/>
+    <path d="M410 194 L690 350"/>
+    <path d="M410 226 L690 356"/>
+  </g>
+  <path d="M130 330 L690 330 L690 342 L130 342 Z" fill="#16130f"/>
+
+  <rect x="130" y="340" width="560" height="190" fill="url(#fw-stone)"/>
+  <rect x="130" y="340" width="560" height="14" fill="#16130f"/>
+  <g fill="#7f7566" opacity="0.55">
+    <path d="M150 356 L210 356 L210 374 L150 374 Z"/>
+    <path d="M224 374 L284 374 L284 392 L224 392 Z"/>
+    <path d="M298 356 L358 356 L358 374 L298 374 Z"/>
+    <path d="M150 392 L210 392 L210 410 L150 410 Z"/>
+    <path d="M372 356 L432 356 L432 374 L372 374 Z"/>
+    <path d="M446 374 L506 374 L506 392 L446 392 Z"/>
+    <path d="M520 356 L580 356 L580 374 L520 374 Z"/>
+    <path d="M594 374 L654 374 L654 392 L594 392 Z"/>
+  </g>
+
+  <rect x="164" y="392" width="94" height="94" fill="#5e7fb0" rx="3"/>
+  <rect x="164" y="392" width="94" height="94" fill="none" stroke="#16130f" stroke-width="4"/>
+  <path d="M211 392 L211 486 M164 439 L258 439" stroke="#16130f" stroke-width="3"/>
+  <rect x="542" y="392" width="94" height="94" fill="#5e7fb0" rx="3"/>
+  <rect x="542" y="392" width="94" height="94" fill="none" stroke="#16130f" stroke-width="4"/>
+  <path d="M589 392 L589 486 M542 439 L636 439" stroke="#16130f" stroke-width="3"/>
+
+  <rect x="314" y="420" width="172" height="110" fill="#7d3b2c" rx="3"/>
+  <rect x="314" y="420" width="172" height="110" fill="none" stroke="#16130f" stroke-width="4"/>
+  <circle cx="400" cy="470" r="6" fill="#f2b25e"/>
+  <rect x="486" y="448" width="22" height="82" fill="#16130f"/>
+
+  <path d="M130 530 L690 530 L694 548 L694 600 L126 600 L126 548 Z" fill="#263629"/>
+  <g fill="#1f2c21">
+    <ellipse cx="288" cy="526" rx="64" ry="16"/>
+    <ellipse cx="548" cy="524" rx="58" ry="15"/>
+  </g>
+  <g stroke="#1f2c21" stroke-width="4" opacity="0.8">
+    <path d="M60 560 L110 500 L160 560"/>
+    <path d="M640 560 L690 505 L740 560"/>
+  </g>
+</svg>

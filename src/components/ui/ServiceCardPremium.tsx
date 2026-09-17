@@ -22,7 +22,7 @@ export function ServiceCardPremium({
   return (
     <article
       className={cn(
-        'group relative flex flex-col overflow-hidden rounded-card border border-roof-200 bg-white shadow-card transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-brand-600 hover:shadow-card-hover',
+        'group relative flex h-full flex-col overflow-hidden rounded-card border border-roof-200 bg-white shadow-card transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-brand-600 hover:shadow-card-hover',
         className,
       )}
     >
@@ -69,7 +69,11 @@ export function ServiceCardPremium({
           className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-roof-200 text-ink-700 transition-colors duration-150 group-hover:border-brand-600 group-hover:bg-brand-700 group-hover:text-white"
           aria-label={`Request ${service.name}`}
         >
-          <ArrowRight size={16} aria-hidden="true" />
+          <ArrowRight
+            size={16}
+            aria-hidden="true"
+            className="transition-transform duration-200 group-hover:translate-x-0.5"
+          />
         </a>
       </div>
     </article>

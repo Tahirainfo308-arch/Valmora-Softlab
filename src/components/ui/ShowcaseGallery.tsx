@@ -67,7 +67,11 @@ function ProjectFeature({ project, className }: { project: Project; className?: 
           className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-roof-200 text-ink-700 transition-colors hover:border-brand-700 hover:bg-brand-700 hover:text-white"
           aria-label={`Request a project like ${project.title}`}
         >
-          <ArrowUpRight size={18} aria-hidden="true" />
+          <ArrowUpRight
+          size={18}
+          aria-hidden="true"
+          className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
         </a>
       </div>
     </article>
@@ -159,7 +163,11 @@ function ProjectWide({ project, className }: { project: Project; className?: str
           className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-800"
         >
           Get a quote for this project
-          <ArrowUpRight size={16} aria-hidden="true" />
+          <ArrowUpRight
+            size={16}
+            aria-hidden="true"
+            className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
         </a>
       </div>
     </article>

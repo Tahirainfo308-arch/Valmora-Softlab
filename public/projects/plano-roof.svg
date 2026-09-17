@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="p-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bcd5ec"/>
+      <stop offset="1" stop-color="#87aacb"/>
+    </linearGradient>
+    <linearGradient id="p-roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4b4a45"/>
+      <stop offset="1" stop-color="#2b2a26"/>
+    </linearGradient>
+    <linearGradient id="p-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4efe6"/>
+      <stop offset="1" stop-color="#e2dac9"/>
+    </linearGradient>
+    <linearGradient id="p-accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#354052"/>
+      <stop offset="1" stop-color="#222a38"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#p-sky)"/>
+  <circle cx="620" cy="140" r="110" fill="#fff8dc" opacity="0.5"/>
+  <circle cx="620" cy="140" r="30" fill="#ffedb0"/>
+
+  <g fill="#9db9a4" opacity="0.5">
+    <path d="M40 360 L100 270 L160 360 Z"/>
+    <path d="M690 320 L738 254 L786 320 Z"/>
+  </g>
+
+  <path d="M140 330 L410 130 L680 330 Z" fill="url(#p-roof)" stroke="#1a1916" stroke-width="5"/>
+  <path d="M140 330 L410 130 L250 330 Z" fill="url(#p-accent)" stroke="#1a1916" stroke-width="3"/>
+  <path d="M680 330 L410 130 L570 330 Z" fill="url(#p-roof)" stroke="#1a1916" stroke-width="3"/>
+  <g stroke="#cfcac0" stroke-width="2" opacity="0.4">
+    <path d="M180 318 L410 156 L640 318"/>
+    <path d="M220 306 L410 186 L600 306"/>
+  </g>
+  <path d="M140 330 L680 330 L680 342 L140 342 Z" fill="#1a1916"/>
+
+  <rect x="140" y="340" width="540" height="150" fill="url(#p-wall)"/>
+  <rect x="140" y="340" width="540" height="14" fill="#1a1916"/>
+  <rect x="640" y="356" width="240" height="140" fill="url(#p-accent)"/>
+  <rect x="640" y="356" width="240" height="140" fill="none" stroke="#1a1916" stroke-width="4"/>
+
+  <rect x="170" y="370" width="92" height="92" fill="#a7c6e8" rx="3"/>
+  <rect x="170" y="370" width="92" height="92" fill="none" stroke="#1a1916" stroke-width="4"/>
+  <path d="M216 370 L216 462 M170 416 L262 416" stroke="#1a1916" stroke-width="3"/>
+  <rect x="300" y="370" width="220" height="92" fill="#d8c9ae" rx="3"/>
+  <rect x="300" y="370" width="220" height="92" fill="none" stroke="#1a1916" stroke-width="4"/>
+  <path d="M410 370 L410 462 M300 416 L520 416" stroke="#1a1916" stroke-width="3"/>
+  <circle cx="410" cy="410" r="5" fill="#c9a05c"/>
+
+  <rect x="690" y="330" width="140" height="104" fill="url(#p-wall)"/>
+  <rect x="690" y="330" width="140" height="104" fill="none" stroke="#1a1916" stroke-width="4"/>
+  <rect x="706" y="356" width="108" height="64" fill="#2f6f64"/>
+  <path d="M760 356 L760 382 L782 382 L782 356 Z" fill="#1a1916"/>
+
+  <path d="M140 490 L880 490 L884 506 L884 600 L136 600 L136 506 Z" fill="#2c4030"/>
+  <g fill="#223124">
+    <ellipse cx="300" cy="486" rx="60" ry="15"/>
+    <ellipse cx="560" cy="484" rx="54" ry="13"/>
+  </g>
+</svg>

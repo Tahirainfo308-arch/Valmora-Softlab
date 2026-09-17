@@ -12,7 +12,8 @@ export function BeforeAfter({ before, after, alt }: BeforeAfterProps) {
 
   return (
     <div
-      className="relative aspect-[4/3] select-none overflow-hidden bg-roof-200"
+      className="relative aspect-[4/3] select-none overflow-hidden rounded-card bg-roof-200
+                 ring-brand-600/60 focus-within:ring-2 focus-within:ring-offset-2"
       role="group"
       aria-label={`Before and after comparison — ${alt}`}
     >

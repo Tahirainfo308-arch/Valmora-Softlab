@@ -23,6 +23,7 @@ import { ServiceCardPremium } from '../../components/ui/ServiceCardPremium'
 import { ShowcaseGallery } from '../../components/ui/ShowcaseGallery'
 import { TrustSection } from '../../components/ui/TrustSection'
 import { TestimonialCard } from '../../components/ui/TestimonialCard'
+import { Reveal } from '../../components/ui/Reveal'
 import { toTelHref, fillTokens } from '../../lib/utils'
 
 const navLinks: NavLink[] = [
@@ -154,9 +155,19 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               </div>
 
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <Button href="#quote" variant="primary" size="lg" full>
+                <Button
+                  href="#quote"
+                  variant="primary"
+                  size="lg"
+                  full
+                  className="group/btn"
+                >
                   {txt(hero.primary_cta)}
-                  <ArrowRight size={18} aria-hidden="true" />
+                  <ArrowRight
+                    size={18}
+                    aria-hidden="true"
+                    className="transition-transform duration-150 group-hover/btn:translate-x-0.5"
+                  />
                 </Button>
                 <PhoneCTA
                   phone={company.phone}
@@ -273,7 +284,17 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
             />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((service, index) => (
-                <ServiceCardPremium key={service.id} service={service} index={index} />
+                <Reveal
+                  key={service.id}
+                  className="h-full"
+                  delay={(index % 3) * 70}
+                >
+                  <ServiceCardPremium
+                    service={service}
+                    index={index}
+                    className="h-full"
+                  />
+                </Reveal>
               ))}
             </div>
           </Container>
@@ -292,9 +313,13 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                   {company.response_time ? ` — usually ${company.response_time}` : ''}.
                 </p>
               </div>
-              <Button href="#quote" variant="primary" size="lg" full>
+              <Button href="#quote" variant="primary" size="lg" full className="group/btn">
                 {trust.free_estimates === true ? 'Get a Free Inspection' : 'Get an Inspection'}
-                <ArrowRight size={18} aria-hidden="true" />
+                <ArrowRight
+                  size={18}
+                  aria-hidden="true"
+                  className="transition-transform duration-150 group-hover/btn:translate-x-0.5"
+                />
               </Button>
             </div>
           </Container>
@@ -338,7 +363,9 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               title={txt(sections?.projects_title) ?? 'Recent Roofing Projects'}
               description={txt(sections?.projects_subtitle)}
             />
-            <ShowcaseGallery projects={projects} />
+            <Reveal>
+              <ShowcaseGallery projects={projects} />
+            </Reveal>
 
             {/* After-showcase CTA */}
             <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-panel bg-ink-950 px-6 py-10 text-center text-white shadow-card sm:flex-row sm:gap-10 sm:text-left md:px-12">
@@ -350,27 +377,33 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                   {company.response_time ? ` — usually ${company.response_time}` : ''}.
                 </p>
               </div>
-              <Button href="#quote" variant="on-dark" size="lg" full>
+              <Button href="#quote" variant="on-dark" size="lg" full className="group/btn">
                 {trust.free_estimates === true ? 'Get Your Free Estimate' : 'Get Your Estimate'}
-                <ArrowRight size={18} aria-hidden="true" />
+                <ArrowRight
+                  size={18}
+                  aria-hidden="true"
+                  className="transition-transform duration-150 group-hover/btn:translate-x-0.5"
+                />
               </Button>
             </div>
           </Container>
         </section>
 
         {/* ---------- Trust system ---------- */}
-        <TrustSection
-          ratings={ratings}
-          trust={trust}
-          company={company}
-          financing={financing}
-          cta={cta}
-          heading={{
-            eyebrow: txt(sections?.trust_eyebrow),
-            title: txt(sections?.trust_title),
-            subtitle: txt(sections?.trust_subtitle),
-          }}
-        />
+<Reveal>
+          <TrustSection
+            ratings={ratings}
+            trust={trust}
+            company={company}
+            financing={financing}
+            cta={cta}
+            heading={{
+              eyebrow: txt(sections?.trust_eyebrow),
+              title: txt(sections?.trust_title),
+              subtitle: txt(sections?.trust_subtitle),
+            }}
+          />
+        </Reveal>
 
 {/* ---------- Testimonials ---------- */}
         <section id="reviews" className="section scroll-mt-24">
@@ -412,11 +445,12 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
 
             <div className="mt-10 flex flex-col gap-5 lg:col-span-7 lg:mt-0">
               {testimonials.map((testimonial, index) => (
-                <TestimonialCard
-                  key={testimonial.id}
-                  testimonial={testimonial}
-                  featured={index === 0}
-                />
+                <Reveal key={testimonial.id} delay={index * 80}>
+                  <TestimonialCard
+                    testimonial={testimonial}
+                    featured={index === 0}
+                  />
+                </Reveal>
               ))}
             </div>
           </Container>
@@ -429,9 +463,13 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                 Tell us about your roof and we'll get back to you{' '}
                 {company.response_time ? `— usually ${company.response_time}` : 'as soon as we can'}.
               </p>
-              <Button href="#quote" variant="on-dark" size="lg" className="mt-8">
+              <Button href="#quote" variant="on-dark" size="lg" className="mt-8 group/btn">
                 {trust.free_estimates === true ? 'Get Your Free Estimate' : 'Get Your Estimate'}
-                <ArrowRight size={18} aria-hidden="true" />
+                <ArrowRight
+                  size={18}
+                  aria-hidden="true"
+                  className="transition-transform duration-150 group-hover/btn:translate-x-0.5"
+                />
               </Button>
             </div>
           </Container>

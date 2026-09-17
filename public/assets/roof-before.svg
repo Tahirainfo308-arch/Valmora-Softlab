@@ -1,18 +1,66 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="bb" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#7c7c6e"/>
-      <stop offset="1" stop-color="#5c5c52"/>
+    <linearGradient id="rb-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9aa1ab"/>
+      <stop offset="1" stop-color="#6b727c"/>
+    </linearGradient>
+    <linearGradient id="rb-roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#565a5e"/>
+      <stop offset="1" stop-color="#3a3d40"/>
+    </linearGradient>
+    <linearGradient id="rb-roof-l" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6b7075"/>
+      <stop offset="1" stop-color="#47494d"/>
+    </linearGradient>
+    <linearGradient id="rb-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c6c2ba"/>
+      <stop offset="1" stop-color="#a8a499"/>
     </linearGradient>
   </defs>
-  <rect width="800" height="600" fill="#e6e6de"/>
-  <path d="M80 330 L400 120 L720 330 Z" fill="#b8b8a8" stroke="#9a9a88" stroke-width="4"/>
-  <rect x="80" y="330" width="640" height="180" fill="#d4d4c8"/>
-  <path d="M80 330 L720 330 L720 358 L80 358 Z" fill="#b8b8a8"/>
-  <g fill="#9a9a88">
-    <rect x="150" y="350" width="90" height="70"/>
-    <rect x="330" y="370" width="120" height="50"/>
-    <rect x="560" y="350" width="90" height="70"/>
+  <rect width="800" height="600" fill="url(#rb-sky)"/>
+  <circle cx="560" cy="200" r="90" fill="#d8dbe0" opacity="0.4"/>
+
+  <rect x="80" y="330" width="640" height="14" fill="#4a4d52" opacity="0.5"/>
+  <path d="M140 330 L410 120 L680 330 Z" fill="url(#rb-roof)" stroke="#1f2124" stroke-width="5"/>
+  <path d="M140 330 L410 120 L220 330 Z" fill="url(#rb-roof-l)" stroke="#1f2124" stroke-width="3"/>
+  <path d="M680 330 L410 120 L600 330 Z" fill="#484b4f" stroke="#1f2124" stroke-width="3"/>
+
+  <rect x="352" y="222" width="118" height="86" fill="#2a2c2e"/>
+  <rect x="352" y="222" width="118" height="86" fill="none" stroke="#1f2124" stroke-width="4"/>
+  <path d="M411 222 L411 308 M352 265 L470 265" stroke="#1f2124" stroke-width="3.5"/>
+  <path d="M366 250 L392 296 L396 296 L370 250 Z" fill="#e6e8ea" opacity="0.6"/>
+
+  <path d="M170 312 L444 196 L716 312 L716 322 L444 210 L170 322 Z" fill="#c94f3d" opacity="0.85"/>
+  <g stroke="#1f2124" stroke-width="2" opacity="0.6">
+    <path d="M200 300 L444 218 L640 300"/>
   </g>
-  <path d="M130 320 L400 150 L670 320 Z" stroke="#e0202a" stroke-width="10" opacity="0.45" fill="none"/>
+  <path d="M300 262 L350 240 L358 246 L308 268 Z" fill="#1b1c1e"/>
+
+  <path d="M140 330 L680 330 L680 342 L140 342 Z" fill="#1f2124"/>
+
+  <rect x="140" y="340" width="520" height="190" fill="url(#rb-wall)"/>
+  <g stroke="#8f8b81" stroke-width="2" opacity="0.8">
+    <path d="M160 408 L640 408"/>
+    <path d="M160 470 L640 470"/>
+  </g>
+
+  <rect x="176" y="380" width="80" height="80" fill="#9aa0a8" rx="3"/>
+  <rect x="176" y="380" width="80" height="80" fill="none" stroke="#1f2124" stroke-width="4"/>
+  <path d="M216 380 L216 460 M176 420 L256 420" stroke="#1f2124" stroke-width="3"/>
+  <path d="M206 410 L236 456 L232 458 L202 412 Z" fill="#d8dbe0" opacity="0.5"/>
+
+  <rect x="320" y="392" width="160" height="138" fill="#8c5a42" rx="3"/>
+  <rect x="320" y="392" width="160" height="138" fill="none" stroke="#1f2124" stroke-width="4"/>
+  <circle cx="400" cy="450" r="6" fill="#4a4d52"/>
+  <rect x="480" y="428" width="20" height="102" fill="#1f2124"/>
+
+  <rect x="540" y="380" width="80" height="80" fill="#8f959d" rx="3"/>
+  <rect x="540" y="380" width="80" height="80" fill="none" stroke="#1f2124" stroke-width="4"/>
+  <path d="M580 380 L580 460 M540 420 L620 420" stroke="#1f2124" stroke-width="3"/>
+
+  <path d="M144 530 L656 530 L656 544 L144 544 Z" fill="#5d6260"/>
+  <path d="M620 520 Q650 506 664 520 L664 544 L620 544 Z" fill="#5d6260"/>
+  <path d="M620 532 L600 544 L664 544 Z" fill="#4a4d52"/>
+  <ellipse cx="280" cy="528" rx="60" ry="16" fill="#54584f"/>
+  <ellipse cx="520" cy="526" rx="48" ry="13" fill="#54584f"/>
 </svg>

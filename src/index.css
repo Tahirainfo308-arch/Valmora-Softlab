@@ -210,6 +210,24 @@
   input, textarea, select {
     font-family: inherit;
   }
+
+  /* Respect users who ask for less motion — kill decorative transitions,
+     animations and smooth scrolling, and make reveal content visible. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 }
 
 
@@ -300,7 +318,8 @@
            focus-visible:outline-2 focus-visible:outline-offset-2;
   }
 
-  .btn:active { @apply scale-[0.985]; }
+  .btn:active { @apply translate-y-0 scale-[0.985]; }
+  .btn:hover { @apply -translate-y-px; }
   .btn:disabled, .btn[aria-disabled="true"] {
     @apply pointer-events-none opacity-50;
   }
@@ -513,8 +532,17 @@
 
   /* Top navigation link (header/footer). */
   .nav-link {
-    @apply text-sm font-semibold text-ink-700 transition-colors
-           hover:text-brand-700;
+    @apply relative text-sm font-semibold text-ink-700;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    transition: color 0.2s ease,
+                background-size 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    &:hover {
+      @apply text-brand-700;
+      background-size: 100% 2px;
+    }
   }
 
   /* Emergency banner (top strip). */
@@ -538,5 +566,25 @@
 
   .testimonial-meta {
     @apply text-xs font-normal text-ink-500;
+  }
+
+
+  /* --------------------------------------------------------------------------
+     COMPONENT CLASSES — Motion (STEP 11 micro-interactions)
+     Scroll-reveal is opt-in per block, subtle, one-shot, and fully
+     suppressed under prefers-reduced-motion.
+     -------------------------------------------------------------------------- */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
   }
 }
