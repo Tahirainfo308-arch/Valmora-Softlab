@@ -45,18 +45,26 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
     contact,
     emergency,
     final_cta,
+    financing,
+    cta,
   } = config
+
+  const showWarranty = trust.warranty
+  const contactPhone = contact.phone ?? company.phone
+  const contactEmail = contact.email ?? company.email
+  const contactAddress = contact.address ?? company.address
 
   return (
     <div className="bg-roof-50" id="top">
-      <EmergencyBanner emergency={emergency} />
+      <EmergencyBanner emergency={emergency} fallbackPhone={company.phone} />
 
       {/* Info strip */}
       <div className="border-b border-roof-200 bg-white">
         <Container className="flex flex-wrap items-center justify-between gap-3 py-2 text-xs font-medium text-ink-600">
           <span>
-            {company.marquee_phrase ?? 'Licensed & Insured'}
-            {trust.license_number ? ` · License #${trust.license_number}` : ''}
+            {company.marquee_phrase ??
+              (trust.licensed && trust.insured ? 'Licensed & Insured' : null)}
+            {trust.licensed && trust.license_number ? ` · License #${trust.license_number}` : ''}
           </span>
           <span>Hours: {contact.hours}</span>
         </Container>
@@ -89,7 +97,7 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
                     {company.years_in_business}+ years experience
                   </span>
                 )}
-                {trust.warranty && (
+                {showWarranty && (
                   <span className="badge">
                     <Award size={15} className="text-brand-700" aria-hidden="true" />
                     Warranty-backed
@@ -99,10 +107,10 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button href="#contact" variant="secondary" size="lg" full>
-                  Book a Free Inspection
+                  {cta?.book_inspection ?? 'Book a Free Inspection'}
                 </Button>
                 <Button href="#projects" variant="outline" size="lg" full>
-                  See Our Work
+                  {cta?.see_work ?? 'See Our Work'}
                 </Button>
               </div>
             </div>
@@ -116,27 +124,31 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
                 />
               </div>
 
-              <div className="absolute -bottom-5 -left-4 rounded-card border border-roof-200 bg-white p-4 shadow-card max-sm:hidden">
-                <p className="flex items-center gap-2 text-sm font-bold text-ink-900">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-50 text-brand-700">
-                    <BadgeCheck size={18} aria-hidden="true" />
-                  </span>
-                  {trust.warranty_text}
-                </p>
-              </div>
+              {showWarranty && (
+                <>
+                  <div className="absolute -bottom-5 -left-4 rounded-card border border-roof-200 bg-white p-4 shadow-card max-sm:hidden">
+                    <p className="flex items-center gap-2 text-sm font-bold text-ink-900">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-50 text-brand-700">
+                        <BadgeCheck size={18} aria-hidden="true" />
+                      </span>
+                      {trust.warranty_text}
+                    </p>
+                  </div>
 
-              <div className="absolute -top-5 right-4 rounded-card border border-roof-200 bg-white p-4 shadow-card max-sm:hidden">
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink-500">
-                  Google rating
-                </p>
-                <p className="mt-1 flex items-center gap-2">
-                  <span className="font-display text-2xl font-bold text-ink-950">
-                    {ratings.google_rating}
-                  </span>
-                  <RatingStars rating={ratings.google_rating} size={14} />
-                </p>
-                <p className="text-xs text-ink-500">{ratings.review_count} reviews</p>
-              </div>
+                  <div className="absolute -top-5 right-4 rounded-card border border-roof-200 bg-white p-4 shadow-card max-sm:hidden">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-ink-500">
+                      Google rating
+                    </p>
+                    <p className="mt-1 flex items-center gap-2">
+                      <span className="font-display text-2xl font-bold text-ink-950">
+                        {ratings.google_rating}
+                      </span>
+                      <RatingStars rating={ratings.google_rating} size={14} />
+                    </p>
+                    <p className="text-xs text-ink-500">{ratings.review_count} reviews</p>
+                  </div>
+                </>
+              )}
             </div>
           </Container>
         </section>
@@ -149,11 +161,13 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
               title="Trust Is Our Best Commitment"
               description="A roofing company is only as good as the workmanship behind it. Here's what backs every project we take on."
             />
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {trust.badges.map((badge) => (
-                <TrustBadge key={badge.id} badge={badge} variant="card" />
-              ))}
-            </div>
+            {trust.badges.length > 0 && (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {trust.badges.map((badge) => (
+                  <TrustBadge key={badge.id} badge={badge} variant="card" />
+                ))}
+              </div>
+            )}
           </Container>
         </section>
 
@@ -162,8 +176,8 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
           <Container>
             <SectionHeading
               eyebrow="What we handle"
-              title="Certified Work, Every Roof Type"
-              description={`From architectural shingles to standing-seam metal, one factory-trained crew handles it all across ${company.city_state}.`}
+              title="One Reliable Crew for Every Roof Type"
+              description={`From architectural shingles to standing-seam metal, the same crew handles it all across ${company.city_state}.`}
             />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((service) => (
@@ -249,8 +263,10 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
           <Container className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <p className="eyebrow">Our guarantee</p>
-              <h2 className="heading-2">Every Roof Backed by Our Promise</h2>
-              <p className="lead mt-4">{trust.warranty_text}</p>
+              <h2 className="heading-2">
+                {showWarranty ? 'Every Roof Backed by Our Promise' : 'Why Homeowners Choose Us'}
+              </h2>
+              {showWarranty && <p className="lead mt-4">{trust.warranty_text}</p>}
               <ul className="mt-8 space-y-4">
                 {trust.licensed && (
                   <li className="flex items-start gap-3">
@@ -274,12 +290,23 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
                     </div>
                   </li>
                 )}
-                {trust.warranty && (
+                {showWarranty && (
                   <li className="flex items-start gap-3">
                     <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
                     <div>
                       <p className="font-semibold text-ink-900">Workmanship Warranty</p>
                       <p className="text-sm text-ink-600">{trust.warranty_text}</p>
+                    </div>
+                  </li>
+                )}
+                {financing?.enabled && (
+                  <li className="flex items-start gap-3">
+                    <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-ink-900">Financing Available</p>
+                      <p className="text-sm text-ink-600">
+                        {financing.label ?? 'Flexible payment options on approved credit'}
+                      </p>
                     </div>
                   </li>
                 )}
@@ -301,14 +328,14 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
               </span>
               <h3 className="heading-3 mt-5 text-center">The {company.name} Promise</h3>
               <p className="mt-3 text-center text-sm leading-relaxed text-ink-600">
-                {company.years_in_business}+ years of roofing experience, every
-                crew factory-trained, and a clean, monitored job site from
-                tear-off to final inspection.
+                {company.years_in_business
+                  ? `${company.years_in_business}+ years in the business, a clean, monitored job site, and thorough documentation from tear-off to final inspection.`
+                  : 'A clean, monitored job site and thorough documentation from tear-off to final inspection.'}
               </p>
               <div className="mt-6 grid grid-cols-3 gap-3 border-t border-roof-200 pt-6 text-center">
                 <div>
                   <p className="font-display text-2xl font-bold text-brand-700">
-                    {company.years_in_business}+
+                    {company.years_in_business ? `${company.years_in_business}+` : '—'}
                   </p>
                   <p className="text-xs font-medium text-ink-500">Years</p>
                 </div>
@@ -342,26 +369,26 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
               {emergency.enabled && (
                 <p className="mt-6 flex items-center gap-2 text-sm font-semibold text-brand-700">
                   <PhoneCall size={16} aria-hidden="true" />
-                  24/7 emergency response: {emergency.phone}
+                  {emergency.title}: {emergency.phone ?? company.phone}
                 </p>
               )}
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <a href={toTelHref(contact.phone)} className="card card-hover p-6">
+              <a href={toTelHref(contactPhone)} className="card card-hover p-6">
                 <PhoneCall size={22} className="text-brand-700" aria-hidden="true" />
                 <h3 className="heading-4 mt-4">Call Us</h3>
-                <p className="mt-1 text-sm font-semibold text-brand-700">{contact.phone}</p>
+                <p className="mt-1 text-sm font-semibold text-brand-700">{contactPhone}</p>
               </a>
-              <a href={`mailto:${contact.email}`} className="card card-hover p-6">
+              <a href={`mailto:${contactEmail}`} className="card card-hover p-6">
                 <Mail size={22} className="text-brand-700" aria-hidden="true" />
                 <h3 className="heading-4 mt-4">Email Us</h3>
-                <p className="mt-1 text-sm font-semibold text-brand-700">{contact.email}</p>
+                <p className="mt-1 text-sm font-semibold text-brand-700">{contactEmail}</p>
               </a>
               <div className="card p-6">
                 <MapPin size={22} className="text-brand-700" aria-hidden="true" />
                 <h3 className="heading-4 mt-4">Visit Us</h3>
-                <p className="mt-1 text-sm text-ink-600">{contact.address}</p>
+                <p className="mt-1 text-sm text-ink-600">{contactAddress}</p>
               </div>
               <div className="card p-6">
                 <Clock size={22} className="text-brand-700" aria-hidden="true" />
@@ -391,7 +418,7 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
                   size="lg"
                   full
                 />
-                <Button href={`mailto:${contact.email}`} variant="on-dark" size="lg" full>
+                <Button href={`mailto:${contactEmail}`} variant="on-dark" size="lg" full>
                   Email Us
                 </Button>
               </div>
@@ -405,6 +432,7 @@ export function TrustTemplate({ config }: { config: CompanyConfig }) {
         contact={contact}
         social={config.social}
         links={navLinks}
+        emergency={emergency}
         dark={false}
         licenseLine={
           trust.licensed && trust.license_number

@@ -35,11 +35,13 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
     stats,
     emergency,
     final_cta,
+    cta,
+    quote_form,
   } = config
 
   return (
     <div className="bg-roof-50 pb-24 lg:pb-0" id="top">
-      <EmergencyBanner emergency={emergency} />
+      <EmergencyBanner emergency={emergency} fallbackPhone={company.phone} />
       <SiteHeader company={company} links={navLinks} variant="dark" />
 
       <main>
@@ -100,7 +102,7 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
                 ))}
               </ul>
 
-              {trust.badges && (
+              {trust.badges.length > 0 && (
                 <div className="mt-8 flex flex-wrap gap-2">
                   {trust.badges.slice(0, 3).map((badge) => (
                     <TrustBadge key={badge.id} badge={badge} variant="dark" />
@@ -117,13 +119,26 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
                     <p className="text-sm font-bold text-white">{emergency.title}</p>
                     <p className="text-xs text-ink-400">{emergency.description}</p>
                   </div>
-                  <PhoneCTA phone={emergency.phone} label="Call Now" variant="on-dark" size="sm" />
+                  <PhoneCTA
+                    phone={emergency.phone ?? company.phone}
+                    label="Call Now"
+                    variant="on-dark"
+                    size="sm"
+                  />
                 </div>
               )}
             </div>
 
             <div id="quote" className="scroll-mt-28">
-              <QuoteForm company={company} services={services} />
+              <QuoteForm
+                company={company}
+                emergency={emergency}
+                responseTime={company.response_time}
+                title={quote_form?.title}
+                subtitle={quote_form?.subtitle}
+                buttonLabel={quote_form?.button_label}
+                trustNote={quote_form?.trust_note}
+              />
             </div>
           </Container>
         </section>
@@ -292,9 +307,9 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
             <SectionHeading
               eyebrow={`Why ${company.city} chooses us`}
               title="Built Different, Backed Better"
-              description={`${company.name} pairs factory certification with ${
+              description={`${company.name} pairs ${
                 trust.warranty ? 'warranty-backed workmanship' : 'top-tier workmanship'
-              } and ${emergency.enabled ? '24/7 storm response' : 'year-round support'}.`}
+              } with ${emergency.enabled ? 'round-the-clock storm response' : 'year-round support'}.`}
             />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {trust.badges.map((badge) => (
@@ -331,7 +346,7 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
             </div>
             {emergency.enabled && (
               <p className="mt-5 text-sm font-semibold text-white/85">
-                24/7 emergency line: {emergency.phone}
+                {emergency.title}: {emergency.phone ?? company.phone}
               </p>
             )}
           </Container>
@@ -343,6 +358,7 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
         contact={config.contact}
         social={config.social}
         links={navLinks}
+        emergency={emergency}
         dark
         licenseLine={
           trust.licensed && trust.license_number
@@ -354,9 +370,9 @@ export function ModernTemplate({ config }: { config: CompanyConfig }) {
       {/* ---------- Mobile sticky action bar ---------- */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-roof-200 bg-white/95 p-3 backdrop-blur lg:hidden">
         <div className="grid grid-cols-2 gap-2">
-          <PhoneCTA phone={company.phone} label="Call Now" size="md" full />
+          <PhoneCTA phone={company.phone} label={cta?.mobile_call ?? 'Call Now'} size="md" full />
           <Button href="#quote" variant="primary" size="md" full>
-            Get a Quote
+            {cta?.mobile_quote ?? 'Get a Quote'}
           </Button>
         </div>
       </div>

@@ -5,10 +5,14 @@ import { Container } from '../ui/Container'
 
 interface EmergencyBannerProps {
   emergency: EmergencyConfig
+  /** Falls back to company.phone when emergency.phone is absent. */
+  fallbackPhone: string
 }
 
-export function EmergencyBanner({ emergency }: EmergencyBannerProps) {
+export function EmergencyBanner({ emergency, fallbackPhone }: EmergencyBannerProps) {
   if (!emergency.enabled) return null
+
+  const phone = emergency.phone ?? fallbackPhone
 
   return (
     <div className="emergency-banner">
@@ -20,11 +24,11 @@ export function EmergencyBanner({ emergency }: EmergencyBannerProps) {
         </span>
         <span className="hidden sm:inline">{emergency.description}</span>
         <a
-          href={toTelHref(emergency.phone)}
+          href={toTelHref(phone)}
           className="inline-flex items-center gap-1 font-bold underline decoration-2 underline-offset-2 hover:text-white/85"
         >
           <PhoneCall size={13} aria-hidden="true" />
-          {emergency.phone}
+          {phone}
         </a>
       </Container>
     </div>

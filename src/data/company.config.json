@@ -11,6 +11,7 @@
     "logo_url": "/assets/logo.svg",
     "years_in_business": 18,
     "emergency_service": true,
+    "response_time": "within 24 hours",
     "marquee_phrase": "Licensed & Insured — GAF-Certified Installers"
   },
   "hero": {
@@ -172,6 +173,7 @@
     "warranty": true,
     "warranty_text": "Every installed roof carries a 50-year workmanship and material warranty.",
     "license_number": "TXRC-452118",
+    "free_estimates": true,
     "badges": [
       {
         "id": "b1",
@@ -206,9 +208,6 @@
     "phone": "(713) 555-0199"
   },
   "contact": {
-    "email": "info@summitroofing.com",
-    "phone": "(713) 555-0182",
-    "address": "4821 Westheimer Rd, Suite 700, Houston, TX 77027",
     "hours": "Mon–Sat: 7:00am–7:00pm"
   },
   "social": {
@@ -242,5 +241,24 @@
     "heading": "Ready for a Roof That's Built to Last?",
     "description": "Get a free, no-pressure inspection and a written estimate within 24 hours. If we can't fix it right, we don't take the job.",
     "button_label": "Book My Free Inspection"
+  },
+  "financing": {
+    "enabled": true,
+    "label": "0% Financing Available"
+  },
+  "cta": {
+    "header": "Get Free Estimate",
+    "mobile_call": "Call Now",
+    "mobile_quote": "Get a Quote",
+    "book_inspection": "Book My Free Inspection",
+    "see_work": "See Our Work",
+    "guarantee_call": "Call for a Free Inspection",
+    "guarantee_book": "Book Online Estimate"
+  },
+  "quote_form": {
+    "title": "Get Your Free Roof Estimate",
+    "subtitle": "Tell us a little about your project and our team will get back to you.",
+    "button_label": "Get My Free Estimate",
+    "trust_note": "No obligation • Free estimate • Fast response"
   }
 }

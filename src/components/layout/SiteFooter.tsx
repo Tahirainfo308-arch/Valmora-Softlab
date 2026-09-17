@@ -1,5 +1,5 @@
 import { Clock, ExternalLink, Mail, MapPin, PhoneCall } from 'lucide-react'
-import type { CompanyInfo, ContactInfo, SocialChannels } from '../../types'
+import type { CompanyInfo, ContactInfo, EmergencyBanner, SocialChannels } from '../../types'
 import { cn, toTelHref } from '../../lib/utils'
 import { Container } from '../ui/Container'
 import { Logo } from '../ui/Logo'
@@ -12,6 +12,7 @@ interface SiteFooterProps {
   links: NavLink[]
   dark?: boolean
   licenseLine?: string
+  emergency?: EmergencyBanner
 }
 
 const socialChannels: Array<{
@@ -30,8 +31,13 @@ export function SiteFooter({
   links,
   dark = false,
   licenseLine,
+  emergency,
 }: SiteFooterProps) {
   const year = new Date().getFullYear()
+  const phone = contact.phone ?? company.phone
+  const email = contact.email ?? company.email
+  const address = contact.address ?? company.address
+  const emergencyPhone = emergency?.enabled ? (emergency.phone ?? company.phone) : null
 
   return (
     <footer
@@ -84,25 +90,25 @@ export function SiteFooter({
           <ul className="mt-4 space-y-3 text-sm">
             <li>
               <a
-                href={toTelHref(contact.phone)}
+                href={toTelHref(phone)}
                 className="flex items-start gap-2.5 transition-colors hover:text-brand-700"
               >
                 <PhoneCall size={16} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
-                {contact.phone}
+                {phone}
               </a>
             </li>
             <li>
               <a
-                href={`mailto:${contact.email}`}
+                href={`mailto:${email}`}
                 className="flex items-start gap-2.5 transition-colors hover:text-brand-700"
               >
                 <Mail size={16} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
-                {contact.email}
+                {email}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
               <MapPin size={16} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
-              {contact.address}
+              {address}
             </li>
             <li className="flex items-start gap-2.5">
               <Clock size={16} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
@@ -138,7 +144,7 @@ export function SiteFooter({
             })}
           </ul>
           <p className="mt-6 text-xs leading-relaxed text-ink-400">
-            Hours: {contact.hours}. Emergency response available 24/7.
+            Hours: {contact.hours}{emergencyPhone ? `. ${emergency?.title ?? 'Emergency'}: ${emergencyPhone}` : ''}
           </p>
         </div>
       </Container>

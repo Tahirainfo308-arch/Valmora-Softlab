@@ -57,27 +57,35 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
     contact,
     emergency,
     final_cta,
+    financing,
+    cta,
+    quote_form,
   } = config
+
+  const showWarranty = trust.warranty
 
   return (
     <div className="bg-roof-50 pb-24 lg:pb-0" id="top">
       {/* ---------- Emergency + contact strips ---------- */}
-      <EmergencyBanner emergency={emergency} />
+      <EmergencyBanner emergency={emergency} fallbackPhone={company.phone} />
       <div className="border-b border-roof-200 bg-ink-950 text-ink-300">
         <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-0.5 text-[11px] font-medium">
           <span className="inline-flex items-center gap-1.5">
             <ShieldCheck size={13} className="text-brand-400" aria-hidden="true" />
-            {company.marquee_phrase ?? 'Licensed & Insured'}
-            {trust.license_number ? ` · ${company.state}# ${trust.license_number}` : ''}
+            {company.marquee_phrase ??
+              (trust.licensed && trust.insured ? 'Licensed & Insured' : null)}
+            {trust.licensed && trust.license_number
+              ? ` · ${company.state}# ${trust.license_number}`
+              : ''}
           </span>
           <span className="hidden items-center gap-5 sm:inline-flex">
             <span className="inline-flex items-center gap-1.5">
               <Clock size={13} className="text-brand-400" aria-hidden="true" />
               {contact.hours}
             </span>
-            <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-1.5 transition-colors hover:text-brand-300">
+            <a href={`mailto:${contact.email ?? company.email}`} className="inline-flex items-center gap-1.5 transition-colors hover:text-brand-300">
               <Mail size={13} className="text-brand-400" aria-hidden="true" />
-              {contact.email}
+              {contact.email ?? company.email}
             </a>
             <a
               href={toTelHref(company.phone)}
@@ -94,7 +102,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
         company={company}
         links={navLinks}
         variant="light"
-        primaryAction={{ label: 'Get Free Estimate', href: '#quote' }}
+        primaryAction={{ label: cta?.header ?? hero.primary_cta, href: '#quote' }}
       />
 
       <main>
@@ -154,7 +162,12 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
             <div id="quote" className="scroll-mt-24">
               <QuoteForm
                 company={company}
-                services={services}
+                emergency={emergency}
+                responseTime={company.response_time}
+                title={quote_form?.title}
+                subtitle={quote_form?.subtitle}
+                buttonLabel={quote_form?.button_label}
+                trustNote={quote_form?.trust_note}
                 compact
                 className="shadow-card-hover ring-1 ring-ink-950/5"
               />
@@ -179,7 +192,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                 Licensed &amp; Insured
               </span>
             )}
-            {trust.warranty && (
+            {showWarranty && (
               <span className="inline-flex items-center gap-2 text-sm font-semibold text-ink-800">
                 <Award size={17} className="text-brand-700" aria-hidden="true" />
                 Warranty-Backed
@@ -200,7 +213,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
             <SectionHeading
               eyebrow="What we do"
               title="Full-Service Roofing for Homes & Businesses"
-              description={`One call handles it all — from free inspections and storm response to complete replacements and gutters, across ${company.city_state}.`}
+              description={`One call handles it all — from ${trust.free_estimates === true ? 'free ' : ''}inspections and storm response to complete replacements and gutters, across ${company.city_state}.`}
             />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((service) => (
@@ -217,8 +230,9 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               <div>
                 <h2 className="heading-3 text-xl">Not sure what your roof needs?</h2>
                 <p className="mt-1 text-sm text-ink-600">
-                  Free, itemized estimates from licensed {company.city} roofers — usually within
-                  24 hours.
+                  {trust.free_estimates === true ? 'Free, ' : ''}itemized estimates from{' '}
+                  {trust.licensed ? 'licensed ' : ''}
+                  {company.city} roofers{company.response_time ? ` — usually ${company.response_time}` : ''}.
                 </p>
               </div>
               <Button href="#quote" variant="primary" size="lg" full>
@@ -234,13 +248,15 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
             <SectionHeading
               eyebrow={`Why ${company.city} homeowners choose us`}
               title="The Roofing Company Neighbors Recommend"
-              description={`Four reasons thousands of ${company.city}-area families hand us their keys and trust us with their most expensive repair.`}
+              description={`Four reasons ${company.city}-area homeowners trust us with their most important repair.`}
             />
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {trust.badges.map((badge) => (
-                <TrustBadge key={badge.id} badge={badge} variant="card" />
-              ))}
-            </div>
+            {trust.badges.length > 0 && (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {trust.badges.map((badge) => (
+                  <TrustBadge key={badge.id} badge={badge} variant="card" />
+                ))}
+              </div>
+            )}
             <div className="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.id} className="text-center">
@@ -279,7 +295,8 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
               <div>
                 <h2 className="heading-3 text-xl">Wondering what your project would cost?</h2>
                 <p className="mt-1 text-sm text-ink-600">
-                  Free inspections across {company.city_state} — honest numbers, no pressure.
+                  {trust.free_estimates === true ? 'Free inspections' : 'Written estimates'} across{' '}
+                  {company.city_state} — honest numbers, no pressure.
                 </p>
               </div>
               <Button href="#quote" variant="primary" size="lg" full>
@@ -331,8 +348,12 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
           <Container className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <p className="eyebrow">Our guarantee</p>
-              <h2 className="heading-2">Every {company.name} Roof Comes With a Promise</h2>
-              <p className="lead mt-4">{trust.warranty_text}</p>
+              <h2 className="heading-2">
+                {showWarranty
+                  ? `Every ${company.name} Roof Comes With a Promise`
+                  : `${company.name} Stands Behind Every Worksheet`}
+              </h2>
+              {showWarranty && <p className="lead mt-4">{trust.warranty_text}</p>}
               <ul className="mt-8 space-y-4">
                 {trust.licensed && (
                   <li className="flex items-start gap-3">
@@ -354,7 +375,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                     </div>
                   </li>
                 )}
-                {trust.warranty && (
+                {showWarranty && (
                   <li className="flex items-start gap-3">
                     <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
                     <div>
@@ -363,49 +384,62 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                     </div>
                   </li>
                 )}
-                <li className="flex items-start gap-3">
-                  <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
-                  <div>
-                    <p className="font-semibold text-ink-900">Free, Itemized Estimates</p>
-                    <p className="text-sm text-ink-600">
-                      Written quotes before any work begins — no surprises, ever.
-                    </p>
-                  </div>
-                </li>
+                {trust.free_estimates === true && (
+                  <li className="flex items-start gap-3">
+                    <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-ink-900">Free, Itemized Estimates</p>
+                      <p className="text-sm text-ink-600">
+                        Written quotes before any work begins — no surprises, ever.
+                      </p>
+                    </div>
+                  </li>
+                )}
+                {financing?.enabled && (
+                  <li className="flex items-start gap-3">
+                    <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
+                    <div>
+                      <p className="font-semibold text-ink-900">Financing Available</p>
+                      <p className="text-sm text-ink-600">
+                        {financing.label ?? 'Flexible payment options on approved credit'}
+                      </p>
+                    </div>
+                  </li>
+                )}
               </ul>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <PhoneCTA
                   phone={company.phone}
-                  label="Call for a Free Inspection"
+                  label={cta?.guarantee_call ?? 'Call for a Free Inspection'}
                   variant="primary"
                   size="lg"
                 />
                 <Button href="#quote" variant="outline" size="lg">
-                  Book Online Estimate
+                  {cta?.guarantee_book ?? 'Book Online Estimate'}
                 </Button>
               </div>
             </div>
 
-            <div className="card overflow-hidden p-8">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-white">
-                <ShieldCheck size={26} aria-hidden="true" />
-              </span>
-              <h3 className="heading-3 mt-5">Backed for a Lifetime</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600">
-                {trust.warranty_text} Every install is documented with photos,
-                signed off by a {company.state}-licensed foreman, and registered
-                with the manufacturer so the coverage stays with the roof — not
-                the owner.
-              </p>
-              <div className="mt-6 grid grid-cols-2 gap-3 border-t border-roof-200 pt-6">
-                {stats.map((stat) => (
-                  <div key={stat.id} className="text-center">
-                    <p className="font-display text-2xl font-bold text-brand-700">{stat.value}</p>
-                    <p className="text-xs font-medium text-ink-500">{stat.label}</p>
-                  </div>
-                ))}
+            {showWarranty && (
+              <div className="card overflow-hidden p-8">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-white">
+                  <ShieldCheck size={26} aria-hidden="true" />
+                </span>
+                <h3 className="heading-3 mt-5">Backed by Our Warranty</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                  {trust.warranty_text} Every project is documented with photos
+                  at every step and backed by our written workmanship coverage.
+                </p>
+                <div className="mt-6 grid grid-cols-2 gap-3 border-t border-roof-200 pt-6">
+                  {stats.map((stat) => (
+                    <div key={stat.id} className="text-center">
+                      <p className="font-display text-2xl font-bold text-brand-700">{stat.value}</p>
+                      <p className="text-xs font-medium text-ink-500">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </Container>
         </section>
 
@@ -430,7 +464,7 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
             </div>
             {emergency.enabled && (
               <p className="mt-6 text-sm text-ink-300">
-                24/7 emergency response: {emergency.phone}
+                {emergency.title}: {emergency.phone ?? company.phone}
               </p>
             )}
           </Container>
@@ -442,15 +476,20 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
         contact={contact}
         social={config.social}
         links={navLinks}
-        licenseLine={`Licensed & insured · ${company.name} serves ${company.city_state} and surrounding areas.`}
+        emergency={emergency}
+        licenseLine={
+          trust.licensed && trust.insured
+            ? `Licensed & insured · ${company.name} serves ${company.city_state} and surrounding areas.`
+            : undefined
+        }
       />
 
       {/* ---------- Mobile sticky action bar ---------- */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-roof-200 bg-white/95 p-3 backdrop-blur lg:hidden">
         <div className="grid grid-cols-2 gap-2">
-          <PhoneCTA phone={company.phone} label="Call Now" size="md" full />
+          <PhoneCTA phone={company.phone} label={cta?.mobile_call ?? 'Call Now'} size="md" full />
           <Button href="#quote" variant="primary" size="md" full>
-            Get a Quote
+            {cta?.mobile_quote ?? 'Get a Quote'}
           </Button>
         </div>
       </div>

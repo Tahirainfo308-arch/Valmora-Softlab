@@ -12,7 +12,7 @@
 /** Core identity block for a roofing company. */
 export interface CompanyInfo {
   name: string
-  /** Display + tel: source phone number. */
+  /** Authoritative display + tel: source phone number. */
   phone: string
   email: string
   address: string
@@ -22,7 +22,12 @@ export interface CompanyInfo {
   city_state: string
   logo_url?: string
   years_in_business?: number
-  /** Whether the company advertises 24/7 emergency service. */
+  /**
+   * Claimed estimate/response turnaround, e.g. "within 24 hours".
+   * Render only when present — never invent a response time.
+   */
+  response_time?: string
+  /** Kept for backwards compatibility; prefer emergency.enabled. */
   emergency_service?: boolean
   marquee_phrase?: string
 }
@@ -113,6 +118,8 @@ export interface TrustBlock {
   warranty: boolean
   warranty_text: string
   license_number?: string
+  /** Whether to advertise free estimates (e.g. "Free, itemized estimates"). */
+  free_estimates?: boolean
   badges: TrustBadge[]
 }
 
@@ -121,15 +128,55 @@ export interface EmergencyBanner {
   enabled: boolean
   title: string
   description: string
-  phone: string
+  /** Optional dedicated emergency line. Falls back to company.phone. */
+  phone?: string
 }
 
 /** Repeatable contact information for footer / contact sections. */
 export interface ContactInfo {
-  email: string
-  phone: string
-  address: string
+  /**
+   * Optional; falls back to company.email so company.* stays authoritative.
+   */
+  email?: string
+  /**
+   * Optional; falls back to company.phone so company.* stays authoritative.
+   */
+  phone?: string
+  /** Optional; falls back to company.address. */
+  address?: string
   hours: string
+}
+
+/** Optional financing offer (0% financing, etc.). Renders only when enabled. */
+export interface FinancingInfo {
+  enabled: boolean
+  label?: string
+}
+
+/** Conversion CTA labels reused across site chrome and CTAs. */
+export interface CtaLabels {
+  /** Header primary button, e.g. "Get Free Estimate". */
+  header?: string
+  /** Mobile sticky bar call label. */
+  mobile_call?: string
+  /** Mobile sticky bar quote label. */
+  mobile_quote?: string
+  /** "Book a free inspection" style hero CTA. */
+  book_inspection?: string
+  /** "See our work" style hero CTA. */
+  see_work?: string
+  /** Guarantee section call button. */
+  guarantee_call?: string
+  /** Guarantee section quote button. */
+  guarantee_book?: string
+}
+
+/** Quote-form copy (title, subtitle, submit + trust line). */
+export interface QuoteFormCopy {
+  title?: string
+  subtitle?: string
+  button_label?: string
+  trust_note?: string
 }
 
 /** External profiles, keyed by platform. */
@@ -173,4 +220,10 @@ export interface CompanyConfig {
   social: SocialChannels
   stats: Stat[]
   final_cta: FinalCTA
+  /** Optional financing offer; renders only when enabled. */
+  financing?: FinancingInfo
+  /** Reused CTA labels across site chrome. */
+  cta?: CtaLabels
+  /** Quote-form title, subtitle, button, trust-note overrides. */
+  quote_form?: QuoteFormCopy
 }

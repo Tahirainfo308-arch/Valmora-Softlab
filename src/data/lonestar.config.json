@@ -11,6 +11,7 @@
     "logo_url": "/assets/logo.svg",
     "years_in_business": 22,
     "emergency_service": true,
+    "response_time": "within 48 hours",
     "marquee_phrase": "Licensed & Insured — CertainTeed Certified Installers"
   },
   "hero": {
@@ -172,6 +173,7 @@
     "warranty": true,
     "warranty_text": "Every roof we install carries a 30-year workmanship and manufacturer materials warranty.",
     "license_number": "TXRC-889233",
+    "free_estimates": true,
     "badges": [
       {
         "id": "ls-b1",
@@ -206,9 +208,6 @@
     "phone": "(214) 555-0175"
   },
   "contact": {
-    "email": "info@lonestarroofingtx.com",
-    "phone": "(214) 555-0174",
-    "address": "2500 Cedar Springs Rd, Dallas, TX 75201",
     "hours": "Mon–Sat: 8:00am–6:00pm"
   },
   "social": {
@@ -242,5 +241,24 @@
     "heading": "Ready for a Roof That Earns Its Keep?",
     "description": "Book a free, no-pressure audit and get a written estimate within 48 hours. If we can't do the job right, we hand you a second opinion.",
     "button_label": "Book My Free Roof Audit"
+  },
+  "financing": {
+    "enabled": true,
+    "label": "0% Financing Available"
+  },
+  "cta": {
+    "header": "Get Free Audit",
+    "mobile_call": "Call Now",
+    "mobile_quote": "Get a Quote",
+    "book_inspection": "Book My Free Roof Audit",
+    "see_work": "See Our Work",
+    "guarantee_call": "Call for a Free Audit",
+    "guarantee_book": "Book Online Audit"
+  },
+  "quote_form": {
+    "title": "Get Your Free Roof Audit",
+    "subtitle": "Tell us a little about your project and our team will get back to you.",
+    "button_label": "Get My Free Roof Audit",
+    "trust_note": "No obligation • Free estimate • Fast response"
   }
 }

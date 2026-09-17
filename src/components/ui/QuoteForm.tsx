@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 import type { FormEvent } from 'react'
 import { CircleCheck, ShieldCheck } from 'lucide-react'
-import type { CompanyInfo, Service } from '../../types'
+import type { CompanyInfo } from '../../types'
 import { cn, toTelHref } from '../../lib/utils'
 import { Button } from './Button'
 
@@ -23,11 +23,15 @@ const URGENCY_OPTIONS = [
 
 interface QuoteFormProps {
   company: CompanyInfo
-  /** Kept for backward compat — service options are now hardcoded for roofing. */
-  services?: Service[]
   title?: string
   subtitle?: string
   buttonLabel?: string
+  /** e.g. "No obligation • Free estimate • Fast response". Omit to hide. */
+  trustNote?: string
+  /** e.g. "within 24 hours" — shown in success state. Omit to hide. */
+  responseTime?: string
+  /** Used to show/hide the emergency phone call in the success state. */
+  emergency?: { enabled: boolean; phone?: string }
   /** Tighten paddings/typography so the full form fits above the fold. */
   compact?: boolean
   className?: string
@@ -35,9 +39,12 @@ interface QuoteFormProps {
 
 export function QuoteForm({
   company,
-  title = 'Get Your Free Roof Estimate',
-  subtitle = 'Tell us a little about your project and our team will get back to you.',
-  buttonLabel = 'Get My Free Estimate',
+  title = 'Get a Quote',
+  subtitle = 'Tell us a little about your project and we\'ll be in touch.',
+  buttonLabel = 'Send Request',
+  trustNote,
+  responseTime,
+  emergency,
   compact = false,
   className,
 }: QuoteFormProps) {
@@ -105,17 +112,19 @@ export function QuoteForm({
             <span className="font-semibold text-ink-900">{company.name}</span>{' '}
             will contact you shortly.
           </p>
-          <p className="mt-1 text-xs text-ink-500">
-            You&apos;ll hear from us within 2 business hours.
-          </p>
-          {company.emergency_service && (
+          {responseTime && (
+            <p className="mt-1 text-xs text-ink-500">
+              You&apos;ll hear from us {responseTime}.
+            </p>
+          )}
+          {emergency?.enabled && (
             <p className="mt-4 text-sm text-ink-600">
               Need help now?{' '}
               <a
-                href={toTelHref(company.phone)}
+                href={toTelHref(emergency.phone ?? company.phone)}
                 className="link-inline font-semibold"
               >
-                Call {company.phone}
+                Call {emergency.phone ?? company.phone}
               </a>
             </p>
           )}
@@ -276,9 +285,9 @@ export function QuoteForm({
           </Button>
 
           {/* Trust statement */}
-          <p className="text-center text-xs text-ink-400">
-            No obligation &bull; Free estimate &bull; Fast response
-          </p>
+          {trustNote && (
+            <p className="text-center text-xs text-ink-400">{trustNote}</p>
+          )}
         </form>
       )}
     </div>
