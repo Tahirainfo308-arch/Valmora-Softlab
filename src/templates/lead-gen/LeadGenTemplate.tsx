@@ -2,7 +2,6 @@ import {
   Award,
   ArrowRight,
   BadgeCheck,
-  CircleCheck,
   Clock,
   Mail,
   PhoneCall,
@@ -21,7 +20,8 @@ import { QuoteForm } from '../../components/ui/QuoteForm'
 import { RatingStars } from '../../components/ui/RatingStars'
 import { SectionHeading } from '../../components/ui/SectionHeading'
 import { ServiceCardPremium } from '../../components/ui/ServiceCardPremium'
-import { ProjectCard } from '../../components/ui/ProjectCard'
+import { ShowcaseGallery } from '../../components/ui/ShowcaseGallery'
+import { TrustSection } from '../../components/ui/TrustSection'
 import { TestimonialCard } from '../../components/ui/TestimonialCard'
 import { toTelHref, fillTokens } from '../../lib/utils'
 
@@ -334,35 +334,43 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
         <section id="projects" className="section scroll-mt-24">
           <Container>
             <SectionHeading
-              eyebrow="Our work"
-              title="Recent Roofing Projects"
-              description={`Real roofs, real homes, real results across the Greater ${company.city} area.`}
+              eyebrow={txt(sections?.projects_eyebrow) ?? 'Our work'}
+              title={txt(sections?.projects_title) ?? 'Recent Roofing Projects'}
+              description={txt(sections?.projects_subtitle)}
             />
-            <div className="grid gap-6 md:grid-cols-3">
-              {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </Container>
-        </section>
+            <ShowcaseGallery projects={projects} />
 
-        {/* ---------- After-projects CTA ---------- */}
-        <section className="py-10">
-          <Container>
-            <div className="flex flex-col items-center justify-between gap-5 rounded-2xl border border-roof-200 bg-white px-6 py-7 text-center shadow-soft sm:flex-row sm:gap-8 sm:text-left md:px-10">
+            {/* After-showcase CTA */}
+            <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-panel bg-ink-950 px-6 py-10 text-center text-white shadow-card sm:flex-row sm:gap-10 sm:text-left md:px-12">
               <div>
-                <h2 className="heading-3 text-xl">Wondering what your project would cost?</h2>
-                <p className="mt-1 text-sm text-ink-600">
-                  {trust.free_estimates === true ? 'Free inspections' : 'Written estimates'} across{' '}
-                  {company.city_state} — honest numbers, no pressure.
+                <h3 className="heading-3 text-2xl text-white">Have a roofing project in mind?</h3>
+                <p className="mt-2 max-w-md text-sm text-ink-300">
+                  Tell us what you're planning and we'll send you a{' '}
+                  {trust.free_estimates === true ? 'free ' : ''}written estimate
+                  {company.response_time ? ` — usually ${company.response_time}` : ''}.
                 </p>
               </div>
-              <Button href="#quote" variant="primary" size="lg" full>
-                {hero.primary_cta}
+              <Button href="#quote" variant="on-dark" size="lg" full>
+                {trust.free_estimates === true ? 'Get Your Free Estimate' : 'Get Your Estimate'}
+                <ArrowRight size={18} aria-hidden="true" />
               </Button>
             </div>
           </Container>
         </section>
+
+        {/* ---------- Trust system ---------- */}
+        <TrustSection
+          ratings={ratings}
+          trust={trust}
+          company={company}
+          financing={financing}
+          cta={cta}
+          heading={{
+            eyebrow: txt(sections?.trust_eyebrow),
+            title: txt(sections?.trust_title),
+            subtitle: txt(sections?.trust_subtitle),
+          }}
+        />
 
         {/* ---------- Testimonials ---------- */}
         <section id="reviews" className="section section-alt scroll-mt-24">
@@ -398,106 +406,6 @@ export function LeadGenTemplate({ config }: { config: CompanyConfig }) {
                 <TestimonialCard key={testimonial.id} testimonial={testimonial} />
               ))}
             </div>
-          </Container>
-        </section>
-
-        {/* ---------- Warranty & trust ---------- */}
-        <section className="section">
-          <Container className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <p className="eyebrow">Our guarantee</p>
-              <h2 className="heading-2">
-                {showWarranty
-                  ? `Every ${company.name} Roof Comes With a Promise`
-                  : `${company.name} Stands Behind Every Worksheet`}
-              </h2>
-              {showWarranty && <p className="lead mt-4">{trust.warranty_text}</p>}
-              <ul className="mt-8 space-y-4">
-                {trust.licensed && (
-                  <li className="flex items-start gap-3">
-                    <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
-                    <div>
-                      <p className="font-semibold text-ink-900">Licensed &amp; Bonded</p>
-                      <p className="text-sm text-ink-600">{company.state} license #{trust.license_number}</p>
-                    </div>
-                  </li>
-                )}
-                {trust.insured && (
-                  <li className="flex items-start gap-3">
-                    <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
-                    <div>
-                      <p className="font-semibold text-ink-900">Fully Insured</p>
-                      <p className="text-sm text-ink-600">
-                        General liability &amp; workers compensation on every crew.
-                      </p>
-                    </div>
-                  </li>
-                )}
-                {showWarranty && (
-                  <li className="flex items-start gap-3">
-                    <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
-                    <div>
-                      <p className="font-semibold text-ink-900">Workmanship Warranty</p>
-                      <p className="text-sm text-ink-600">{trust.warranty_text}</p>
-                    </div>
-                  </li>
-                )}
-                {trust.free_estimates === true && (
-                  <li className="flex items-start gap-3">
-                    <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
-                    <div>
-                      <p className="font-semibold text-ink-900">Free, Itemized Estimates</p>
-                      <p className="text-sm text-ink-600">
-                        Written quotes before any work begins — no surprises, ever.
-                      </p>
-                    </div>
-                  </li>
-                )}
-                {financing?.enabled && (
-                  <li className="flex items-start gap-3">
-                    <CircleCheck size={22} className="mt-0.5 shrink-0 text-brand-700" aria-hidden="true" />
-                    <div>
-                      <p className="font-semibold text-ink-900">Financing Available</p>
-                      <p className="text-sm text-ink-600">
-                        {financing.label ?? 'Flexible payment options on approved credit'}
-                      </p>
-                    </div>
-                  </li>
-                )}
-              </ul>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <PhoneCTA
-                  phone={company.phone}
-                  label={cta?.guarantee_call ?? 'Call for a Free Inspection'}
-                  variant="primary"
-                  size="lg"
-                />
-                <Button href="#quote" variant="outline" size="lg">
-                  {cta?.guarantee_book ?? 'Book Online Estimate'}
-                </Button>
-              </div>
-            </div>
-
-            {showWarranty && (
-              <div className="card overflow-hidden p-8">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-white">
-                  <ShieldCheck size={26} aria-hidden="true" />
-                </span>
-                <h3 className="heading-3 mt-5">Backed by Our Warranty</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600">
-                  {trust.warranty_text} Every project is documented with photos
-                  at every step and backed by our written workmanship coverage.
-                </p>
-                <div className="mt-6 grid grid-cols-2 gap-3 border-t border-roof-200 pt-6">
-                  {stats.map((stat) => (
-                    <div key={stat.id} className="text-center">
-                      <p className="font-display text-2xl font-bold text-brand-700">{stat.value}</p>
-                      <p className="text-xs font-medium text-ink-500">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </Container>
         </section>
 

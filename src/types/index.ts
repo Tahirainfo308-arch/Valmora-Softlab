@@ -121,6 +121,11 @@ export interface TrustBlock {
   /** Whether to advertise free estimates (e.g. "Free, itemized estimates"). */
   free_estimates?: boolean
   badges: TrustBadge[]
+  /**
+   * Manufacturer / trade certifications (e.g. "GAF-Certified Installer").
+   * Render only when present — never invent certificates.
+   */
+  certifications?: string[]
 }
 
 /** Emergency roof response banner strip. */
@@ -187,6 +192,12 @@ export interface SectionsCopy {
   services_eyebrow?: string
   services_title?: string
   services_subtitle?: string
+  projects_eyebrow?: string
+  projects_title?: string
+  projects_subtitle?: string
+  trust_eyebrow?: string
+  trust_title?: string
+  trust_subtitle?: string
 }
 
 /** External profiles, keyed by platform. */

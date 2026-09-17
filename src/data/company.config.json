@@ -199,7 +199,8 @@
         "detail": "2,400+ roofs completed across Houston",
         "icon": "Clock"
       }
-    ]
+    ],
+    "certifications": ["GAF-Certified Installer"]
   },
   "emergency": {
     "enabled": true,
@@ -264,6 +265,12 @@
   "sections": {
     "services_eyebrow": "What we do",
     "services_title": "Roofing Services Built Around Your Home",
-    "services_subtitle": "From storm damage to full replacements, one crew handles it all across {{city_state}}."
+    "services_subtitle": "From storm damage to full replacements, one crew handles it all across {{city_state}}.",
+    "projects_eyebrow": "Our work",
+    "projects_title": "Real Projects. Real Results.",
+    "projects_subtitle": "Three roofs we're proud of — photographed start to finish across {{city_state}}.",
+    "trust_eyebrow": "Why {{city}} trusts us",
+    "trust_title": "Credentialed, Insured, and Warranty-Backed",
+    "trust_subtitle": "Everything here comes from our licensing, insurance certificates, and manufacturer credentials."
   }
 }
