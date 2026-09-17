@@ -1,0 +1,11 @@
+{
+  "name": "Velmora — Roofing Contractor Demo System",
+  "short_name": "Velmora",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#ED6407",
+  "background_color": "#FFF8F1",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}
